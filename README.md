@@ -1,4 +1,4 @@
-# Flags
+# Flags #
 
 Online flag recognition game with some extra information. Runs in browser.
 
