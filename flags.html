@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Flags</title>
+
+    <style type="text/css">
+        html {
+            font-family:Verdana, "Geneva CE", lucida, sans-serif, Sans;
+            padding:20px;
+        }
+
+        input {
+            border:1px solid #000000;
+        }
+
+        input#country {
+            width:250px;
+        }
+
+        input#button {
+            width:250px;
+        }
+
+        img#flag, img#prevFlag {
+            border:1px solid #aaaaaa;
+            display:block;
+            width:250px;
+            height:150px;
+        }
+
+        div.foot {
+            color:#777777;
+            font-size:small;
+            font-style:italic;
+            margin-top:20px;
+            border-top:1px solid #777777;
+            text-align:right;
+        }
+
+        div.foot a {
+            color:#777777;
+        }
+
+        h1 {
+            font-size:130%;
+        }
+
+        h2 {
+            font-size:120%;
+        }
+    </style>
+
+</head>
+<body>
+
+<h1>Flags</h1>
+
+<table>
+    <tr><td><input id="country" type="text" value="Country name"></td></tr>
+    <tr><td><input id="button" type="submit" name="submit" value="Check" onclick="process();"></td></tr>
+
+    <tr><td><img id="flag" src="" alt=""></td></tr>
+    <tr><td><span id="score">Score: 0 of 0</span></td></tr>
+</table>
+
+<h2>Previous:</h2>
+
+<table>
+    <tr><td><img id="prevFlag" src="" alt=""></td></tr>
+    <tr><td><span id="prevCountry">&nbsp;</span></td></tr>
+    <tr><td><span id="capital">&nbsp;</span></td></tr>
+    <tr><td><span id="continent">&nbsp;</span></td></tr>
+    <tr><td><span id="government">&nbsp;</span></td></tr>
+    <tr><td><span id="language">&nbsp;</span></td></tr>
+</table>
+
+<div class="foot">
+Code by Jan Schupke (jan.schupke at gmail), images taken from <a href="http://www.flagpictures.org/">www.flagpictures.org</a>, 2014.
+</div>
+
+<script type="text/javascript">
+<!--
+
+function Entry(image, country, capital, continent, government, language) {
+    this.image = image;
+    this.country = country;
+    this.capital = capital;
+    this.continent = continent;
+    this.government = government;
+    this.language = language;
+
+    this.getImage = function() {
+        return this.image;
+    };
+
+    this.getCountry = function() {
+        return this.country;
+    };
+
+    this.getCapital = function() {
+        return this.capital;
+    };
+
+    this.getContinent = function() {
+        return this.continent;
+    };
+
+    this.getGovernment = function() {
+        return this.government;
+    };
+
+    this.getLanguage = function() {
+        return this.language;
+    };
+}
+
+var entries = [];
+
+entries.push(new Entry("albania", "Albania", "Tirana", "Europe", "Republic", "Albanian"));
+entries.push(new Entry("australia", "Australia", "Canberra", "Asia", "Constitutional monarchy", "English"));
+entries.push(new Entry("austria", "Austria", "Vienna", "Europe", "Republic", "German"));
+entries.push(new Entry("belgium", "Belgium", "Brussels", "Europe", "Monarchy", "French, German, Dutch"));
+entries.push(new Entry("brazil", "Brazil", "Brasilia", "America", "Republic", "Portugese"));
+entries.push(new Entry("britain", "Great Britain", "London", "Europe", "Constitutional monarchy", "English"));
+entries.push(new Entry("canada", "Canada", "Ottawa", "America", "Constitutional monarchy", "English, French"));
+entries.push(new Entry("china", "China", "Beijing", "Asia", "Communist state", "Chinese"));
+entries.push(new Entry("croatia", "Croatia", "Zagreb", "Europe", "Republic", "Croatian"));
+entries.push(new Entry("czech", "the Czech Republic", "Prague", "Europe", "Republic", "Czech"));
+entries.push(new Entry("egypt", "Egypt", "Cairo", "Africa", "Provisional government", "Arabic"));
+entries.push(new Entry("emirates", "United Arab Emirates", "Abu Dhabi", "Elective monarchy", "Arabic"));
+entries.push(new Entry("estonia", "Estonia", "Tallinn", "Europe", "Republic", "Estonian"));
+entries.push(new Entry("finland", "Finland", "Helsinki", "Europe", "Republic", "Finnish, Swedish"));
+entries.push(new Entry("france", "France", "Paris", "Europe", "Republic", "French"));
+entries.push(new Entry("germany", "Germany", "Berlin", "Europe", "Republic", "German"));
+entries.push(new Entry("greece", "Greece", "Athens", "Europe", "Republic", "Greek"));
+entries.push(new Entry("hungary", "Hungary", "Budapest", "Europe", "Republic", "Hungarian"));
+entries.push(new Entry("iceland", "Iceland", "Reykjavik", "Europe", "Republic", "Icelandic"));
+entries.push(new Entry("india", "India", "New Delhi", "Asia", "Republic", "Hindi, English"));
+entries.push(new Entry("iraq", "Iraq", "Baghdad", "Asia", "Republic", "Arabic, Kurdish"));
+entries.push(new Entry("israel", "Israel", "Jerusalem", "Asia", "Republic", "Hebrew, Arabic"));
+entries.push(new Entry("italy", "Italy", "Rome", "Europe", "Republic", "Italian"));
+entries.push(new Entry("japan", "Japan", "Tokyo", "Asia", " Constitutional monarchy", "Japanese"));
+entries.push(new Entry("korea", "South Korea", "Seoul", "Asia", "Republic", "Korean"));
+entries.push(new Entry("latvia", "Latvia", "Riga", "Europe", "Republic", "Latvian"));
+entries.push(new Entry("macedonia", "Macedonia", "Skopje", "Europe", "Republic", "Macedonian"));
+entries.push(new Entry("mexico", "Mexico", "Mexico City", "America", "Republic", "Spanish"));
+entries.push(new Entry("netherlands", "Netherlands", "Amsterdam", "Europe", "Constitutional monarchy", "Dutch"));
+entries.push(new Entry("norway", "Norway", "Oslo", "Europe", "Constitutional monarchy", "Norwegian"));
+entries.push(new Entry("philippines", "Philippines", "Manila", "Asia", "Republic", "English, Filipino"));
+entries.push(new Entry("poland", "Poland", "Warsaw", "Europe", "Republic", "Polish"));
+entries.push(new Entry("portugal", "Portugal", "Lisbon", "Europe", "Republic", "Portugese"));
+entries.push(new Entry("russia", "Russian Federation", "Moscow", "Euroasia", "Republic", "Russian"));
+entries.push(new Entry("saudi", "Saudi Arabia", "Riyadh", "Asia", "Absolute monarchy", "Arabic"));
+entries.push(new Entry("singapore", "Singapore", "Singapore", "Asia", "Republic", "English, Malay, Tamil, Mandarin"));
+entries.push(new Entry("slovakia", "Slovakia", "Bratislava", "Europe", "Republic", "Slovak"));
+entries.push(new Entry("spain", "Spain", "Madrid", "Europe", "Constitutional monarchy", "Spanish"));
+entries.push(new Entry("sweden", "Sweden", "Stockholm", "Europe", "Constitutional monarchy", "Swedish"));
+entries.push(new Entry("switzerland", "Switzerland", "Bern", "Europe", "Republic", "German, French, Romansh, Italian"));
+entries.push(new Entry("taiwan", "Taiwan", "Taipei", "Asia", "Republic", "Mandarin"));
+entries.push(new Entry("ukraine", "Ukraine", "Kiev", "Europe", "Republic", "Ukrainian"));
+entries.push(new Entry("usa", "United States of America", "Washington", "America", "Republic", "None"));
+entries.push(new Entry("vietnam", "Vietnam", "Hanoi", "Asia", "Communist state", "Vietnamese"));
+entries.push(new Entry("zealand", "New Zealand", "Wellington", "Asia", "Constitutional monarchy", "English"));
+
+entries.push(new Entry("greenland", "Greenland", "Nuuk", "Europe", "Constitutional monarchy", "Greenlandic"));
+entries.push(new Entry("cuba", "Cuba", "Havana", "America", "Socialist state, Republic", "Spanish"));
+entries.push(new Entry("bahamas", "Bahamas", "Nassau", "America", "Constitutional monarchy", "English"));
+entries.push(new Entry("haiti", "Haiti", "Port-au-Prince", "America", "Republic", "French"));
+entries.push(new Entry("jamaica", "Jamaica", "Kingston", "America", "Constitutional monarchy", "English"));
+entries.push(new Entry("domrep", "Dominican Republic", "Santo Dominigo", "America", "Republic", "Spanish"));
+entries.push(new Entry("venezuela", "Venezuela", "Caracas", "America", "Republic", "Spanish"));
+entries.push(new Entry("ecuador", "Ecuador", "Quito", "America", "Republic", "Spanish"));
+entries.push(new Entry("peru", "Peru", "Lima", "America", "Republic", "Spanish"));
+entries.push(new Entry("bolivia", "Bolivia", "Sucre", "America", "Republic", "Spanish"));
+entries.push(new Entry("chile", "Chile", "Santiago", "America", "Republic", "Spanish"));
+entries.push(new Entry("uruguay", "Uruguay", "Montevideo", "America", "Republic", "Spanish"));
+entries.push(new Entry("argentina", "Argentina", "Buenos Aires", "America", "Republic", "Spanish"));
+entries.push(new Entry("kazakhstan", "Kazakhstan", "Astana", "Asia", "Presidential state", "Kazakh, Russian"));
+entries.push(new Entry("mongolia", "Mongolia", "Ulan Bator", "Asia", "Republic", "Mongolian"));
+entries.push(new Entry("nepal", "Nepal", "Kathmandu", "Asia", "Republic", "Nepali"));
+entries.push(new Entry("cambodia", "Cambodia", "Phnom Penh", "Southeast Asia", "Constitutional monarchy", "Khmer"));
+entries.push(new Entry("srilanka", "Sri Lanka", "Colombo", "Southeast Asia", "Republic", "Sinhala, Tamil"));
+entries.push(new Entry("malaysia", "Malaysia", "Kuala Lumpur", "Southeast Asia", "Constitutional monarchy", "Malaysian"));
+entries.push(new Entry("fiji", "Fiji", "Suva", "Southeast Asia", "Military dictatorship", "English, Fijian"));
+entries.push(new Entry("micronesia", "Micronesia", "-", "-", "-"));
+entries.push(new Entry("vatican", "Vatican City", "Vatican City", "Europe", "Absolute monarchy, Theocracy", "Italian"));
+entries.push(new Entry("bosnia", "Bosnia and Herzegovina", "Sarajevo", "Europe", "Republic", "Bosnian, Serbian, Croatian"));
+entries.push(new Entry("luxembourg", "Luxembourg", "Luxembourg", "Europe", "Constitutional monarchy", "French, Luxembourgish, German"));
+entries.push(new Entry("liechtenstein", "Liechtenstein", "Vaduz", "Europe", "Constitutional monarchy", "Gernam"));
+entries.push(new Entry("lebanon", "Lebanon", "Beirut", "Africa", "Republic", "Arabic"));
+entries.push(new Entry("qatar", "Qatar", "Doha", "Africa", "Absolute monarchy", "Arabic"));
+entries.push(new Entry("bahrain", "Bahrain", "Manama", "Africa", "Constitutional monarchy", "Arabic"));
+entries.push(new Entry("kuwait", "Kuwait", "Kuwait City", "Asia", "Constitutional monarchy", "Arabic"));
+entries.push(new Entry("jordan", "Jordan", "Amman", "Asia", "Constitutional monarchy", "Arabic"));
+entries.push(new Entry("armenia", "Armenia", "Yerevan", "Euroasia", "Republic", "Armenian"));
+entries.push(new Entry("azerbaijan", "Azerbaijan", "Baku", "Asia", "Republic", "Azerbaijani"));
+entries.push(new Entry("afghanistan", "Afghanistan", "Kabul", "Asia", "Islamic republic", "Farsi"));
+entries.push(new Entry("uzbekistan", "Uzbekistan", "Tashkent", "Asia", "Republic", "Uzbek"));
+entries.push(new Entry("kyrgyzstan", "Kyrgyzstan", "Bishkek", "Asia", "Republic", "Kyrgyz, Russian"));
+entries.push(new Entry("morocco", "Morocco", "Rabat", "Africa", "Constitutional monarchy", "Arabic"));
+entries.push(new Entry("libya", "Libya", "Tripoli", "Africa", "Republic", "Arabic"));
+entries.push(new Entry("somalia", "Somalia", "Magadishu", "Africa", "Republic", "Somali, Arabic"));
+entries.push(new Entry("saf", "Republic of South Africa", "Pretoria", "Africa", "Republic", "English, etc."));
+
+entries.push(new Entry("gambia", "Gambia", "Banjul", "Africa", "Republic", "English"));
+entries.push(new Entry("liberia", "Liberia", "Monrovia", "Africa", "Republic", "English"));
+entries.push(new Entry("guinea", "Guinea", "Conakry", "Africa", "Republic", "French"));
+entries.push(new Entry("ghana", "Ghana", "Accra", "Africa", "Republic", "English"));
+entries.push(new Entry("mali", "Mali", "Bamako", "Africa", "Republic", "French"));
+entries.push(new Entry("algeria", "Algeria", "Algiers", "Africa", "Presidential system", "Arabic"));
+entries.push(new Entry("tunisia", "Tunisia", "Tunis", "Africa", "Republic", "Arabic"));
+entries.push(new Entry("cameron", "Cameroon", "Yaoundé", "Africa", "Republic", "French, English"));
+entries.push(new Entry("chad", "Chad", "N'Djamena", "Africa", "Presidential system", "French, Arabic"));
+entries.push(new Entry("sudan", "Sudan", "Khartoum", "Africa", "Republic", "Arabic, English"));
+entries.push(new Entry("ethiopia", "Ethiopia", "Addis Ababa", "Africa", "Republic", "Amharic"));
+entries.push(new Entry("uganda", "Uganda", "Kampala", "Africa", "Republic", "English, Swahili"));
+entries.push(new Entry("kenya", "Kenya", "Nairobi", "Africa", "Republic", "English, Swahili"));
+entries.push(new Entry("tanzania", "Tanzania", "Dodoma", "Africa", "Republic", "English, Swahili"));
+entries.push(new Entry("angola", "Angola", "Luanda", "Africa", "Republic", "Portugese"));
+entries.push(new Entry("zambia", "Zambia", "Lusaka", "Africa", "Repoublic", "English"));
+entries.push(new Entry("zimbabwe", "Zimbabwe", "Harare", "Africa", "Republic", "English, Shona, Ndebele"));
+entries.push(new Entry("madagascar", "Madagascar", "Antananarivo", "Africa", "Caretaker government", "Malagasy, French"));
+
+document.getElementById("country").onkeypress = function(e) {
+    var event = e || window.event;
+    var charCode = event.which || event.keyCode;
+
+    if ( charCode == '13' ) {
+      process();
+      document.getElementById("country").value = "";
+      return false;
+    }
+}
+
+var total = 0;
+var correct = 0;
+var currentEntry;
+var index = 0;
+
+index = Math.floor(Math.random() * (entries.length))
+currentEntry = entries[index];
+document.getElementById("flag").src = "img/" + currentEntry.getImage() + ".jpg";
+
+function process() {
+    total++;
+
+    if(window.currentEntry.getCountry().toLowerCase() == document.getElementById("country").value.toLowerCase()) {
+        correct++;
+    }
+
+    document.getElementById("prevFlag").src = document.getElementById("flag").src;
+    document.getElementById("prevCountry").innerHTML = "<b>Country:</b> " + currentEntry.getCountry();
+    document.getElementById("capital").innerHTML = "<b>Capital:</b> " + currentEntry.getCapital();
+    document.getElementById("continent").innerHTML = "<b>Continent:</b> " + currentEntry.getContinent();
+    document.getElementById("government").innerHTML = "<b>Government:</b> " + currentEntry.getGovernment();
+    document.getElementById("language").innerHTML = "<b>Official languages:</b> " + currentEntry.getLanguage();
+
+    index = Math.floor(Math.random() * (entries.length))
+    currentEntry = entries[index];
+
+    document.getElementById("flag").src = "img/" + currentEntry.getImage() + ".jpg";
+    document.getElementById("score").innerHTML = "<b>Score:</b> " + correct + " of " + window.total;
+}
+
+// -->
+</script>
+
+</body>
+</html>
