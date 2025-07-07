@@ -59,6 +59,25 @@
             margin-bottom: 25px;
         }
 
+        .flags-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .current-section {
+            text-align: center;
+        }
+
+        .previous-section {
+            background: #f7fafc;
+            border-radius: 12px;
+            padding: 20px;
+            border: 2px solid #e2e8f0;
+            text-align: center;
+        }
+
         .country-input {
             width: 100%;
             max-width: 350px;
@@ -135,13 +154,7 @@
             border: 2px solid #e2e8f0;
         }
 
-        .previous-section {
-            background: #f7fafc;
-            border-radius: 12px;
-            padding: 20px;
-            margin-top: 25px;
-            border: 2px solid #e2e8f0;
-        }
+
 
         .previous-section h2 {
             font-size: 1.3rem;
@@ -229,6 +242,11 @@
                 margin-bottom: 25px;
             }
 
+            .flags-container {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
             .info-grid {
                 grid-template-columns: 1fr;
             }
@@ -254,6 +272,10 @@
             .subtitle {
                 font-size: 0.85rem;
                 margin-bottom: 20px;
+            }
+
+            .flags-container {
+                gap: 12px;
             }
 
             .check-button {
@@ -291,37 +313,40 @@
                 <button id="button" class="check-button" onclick="process();">Check Answer</button>
             </div>
 
-            <div class="flag-container">
-                <img id="flag" class="current-flag" src="" alt="Current flag">
-            </div>
+            <div class="flags-container">
+                <div class="current-section">
+                    <div class="flag-container">
+                        <img id="flag" class="current-flag" src="" alt="Current flag">
+                    </div>
+                    <div class="score" id="score">Score: 0 of 0</div>
+                </div>
 
-            <div class="score" id="score">Score: 0 of 0</div>
-        </div>
-
-        <div class="previous-section hidden" id="previousSection">
-            <h2>Previous Flag</h2>
-            <img id="prevFlag" class="previous-flag" src="" alt="Previous flag">
-            
-            <div class="info-grid">
-                <div class="info-item">
-                    <div class="info-label">Country</div>
-                    <div class="info-value" id="prevCountry">&nbsp;</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">Capital</div>
-                    <div class="info-value" id="capital">&nbsp;</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">Continent</div>
-                    <div class="info-value" id="continent">&nbsp;</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">Government</div>
-                    <div class="info-value" id="government">&nbsp;</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">Languages</div>
-                    <div class="info-value" id="language">&nbsp;</div>
+                <div class="previous-section hidden" id="previousSection">
+                    <h2>Previous Flag</h2>
+                    <img id="prevFlag" class="previous-flag" src="" alt="Previous flag">
+                    
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <div class="info-label">Country</div>
+                            <div class="info-value" id="prevCountry">&nbsp;</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Capital</div>
+                            <div class="info-value" id="capital">&nbsp;</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Continent</div>
+                            <div class="info-value" id="continent">&nbsp;</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Government</div>
+                            <div class="info-value" id="government">&nbsp;</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Languages</div>
+                            <div class="info-value" id="language">&nbsp;</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
