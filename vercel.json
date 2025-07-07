@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "*.html",
+      "src": "**",
       "use": "@vercel/static"
     }
   ],
@@ -10,10 +10,6 @@
     {
       "src": "/",
       "dest": "/flags.html"
-    },
-    {
-      "src": "/img/(.*)",
-      "dest": "/img/$1"
     }
   ]
 } 
