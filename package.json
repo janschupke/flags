@@ -1,0 +1,21 @@
+{
+  "name": "flags-quiz",
+  "version": "1.0.0",
+  "description": "A country flags quiz application",
+  "main": "flags.html",
+  "scripts": {
+    "start": "serve .",
+    "build": "echo 'No build step required for static site'"
+  },
+  "keywords": [
+    "flags",
+    "quiz",
+    "countries",
+    "geography"
+  ],
+  "author": "Jan Schupke",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.2.0"
+  }
+} 
