@@ -1,84 +1,301 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Flags</title>
-
-    <style type="text/css">
-        html {
-            font-family:Verdana, "Geneva CE", lucida, sans-serif, Sans;
-            padding:20px;
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flags Quiz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        input {
-            border:1px solid #000000;
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: #333;
         }
 
-        input#country {
-            width:250px;
-        }
-
-        input#button {
-            width:250px;
-        }
-
-        img#flag, img#prevFlag {
-            border:1px solid #aaaaaa;
-            display:block;
-            width:250px;
-            height:150px;
-        }
-
-        div.foot {
-            color:#777777;
-            font-size:small;
-            font-style:italic;
-            margin-top:20px;
-            border-top:1px solid #777777;
-            text-align:right;
-        }
-
-        div.foot a {
-            color:#777777;
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
         }
 
         h1 {
-            font-size:130%;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        h2 {
-            font-size:120%;
+        .subtitle {
+            color: #718096;
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        .game-section {
+            margin-bottom: 40px;
+        }
+
+        .input-group {
+            margin-bottom: 30px;
+        }
+
+        .country-input {
+            width: 100%;
+            max-width: 400px;
+            padding: 15px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            outline: none;
+            margin-bottom: 20px;
+        }
+
+        .country-input:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .country-input::placeholder {
+            color: #a0aec0;
+        }
+
+        .check-button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            margin-bottom: 30px;
+        }
+
+        .check-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .check-button:active {
+            transform: translateY(0);
+        }
+
+        .flag-container {
+            margin-bottom: 30px;
+        }
+
+        .current-flag {
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            height: 250px;
+            object-fit: cover;
+            border: 3px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .current-flag:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .score {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2d3748;
+            background: #f7fafc;
+            padding: 15px 30px;
+            border-radius: 12px;
+            display: inline-block;
+            border: 2px solid #e2e8f0;
+        }
+
+        .previous-section {
+            background: #f7fafc;
+            border-radius: 16px;
+            padding: 30px;
+            margin-top: 40px;
+            border: 2px solid #e2e8f0;
+        }
+
+        .previous-section h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 25px;
+        }
+
+        .previous-flag {
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 350px;
+            height: 200px;
+            object-fit: cover;
+            border: 2px solid #e2e8f0;
+            margin-bottom: 20px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            text-align: left;
+        }
+
+        .info-item {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: #667eea;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+        }
+
+        .info-value {
+            color: #2d3748;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #e2e8f0;
+            color: #718096;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+                margin: 10px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .current-flag, .previous-flag {
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px 15px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .check-button {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
         }
     </style>
-
 </head>
 <body>
+    <div class="container">
+        <h1>Flags Quiz</h1>
+        <p class="subtitle">Test your knowledge of world flags and learn about countries</p>
 
-<h1>Flags</h1>
+        <div class="game-section">
+            <div class="input-group">
+                <input id="country" class="country-input" type="text" placeholder="Enter country name..." autocomplete="off">
+                <br>
+                <button id="button" class="check-button" onclick="process();">Check Answer</button>
+            </div>
 
-<table>
-    <tr><td><input id="country" type="text" value="Country name"></td></tr>
-    <tr><td><input id="button" type="submit" name="submit" value="Check" onclick="process();"></td></tr>
+            <div class="flag-container">
+                <img id="flag" class="current-flag" src="" alt="Current flag">
+            </div>
 
-    <tr><td><img id="flag" src="" alt=""></td></tr>
-    <tr><td><span id="score">Score: 0 of 0</span></td></tr>
-</table>
+            <div class="score" id="score">Score: 0 of 0</div>
+        </div>
 
-<h2>Previous:</h2>
+        <div class="previous-section">
+            <h2>Previous Flag</h2>
+            <img id="prevFlag" class="previous-flag" src="" alt="Previous flag">
+            
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="info-label">Country</div>
+                    <div class="info-value" id="prevCountry">&nbsp;</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Capital</div>
+                    <div class="info-value" id="capital">&nbsp;</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Continent</div>
+                    <div class="info-value" id="continent">&nbsp;</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Government</div>
+                    <div class="info-value" id="government">&nbsp;</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Languages</div>
+                    <div class="info-value" id="language">&nbsp;</div>
+                </div>
+            </div>
+        </div>
 
-<table>
-    <tr><td><img id="prevFlag" src="" alt=""></td></tr>
-    <tr><td><span id="prevCountry">&nbsp;</span></td></tr>
-    <tr><td><span id="capital">&nbsp;</span></td></tr>
-    <tr><td><span id="continent">&nbsp;</span></td></tr>
-    <tr><td><span id="government">&nbsp;</span></td></tr>
-    <tr><td><span id="language">&nbsp;</span></td></tr>
-</table>
-
-<div class="foot">
-Code by Jan Schupke (jan.schupke at gmail), images taken from <a href="http://www.flagpictures.org/">www.flagpictures.org</a>, 2014.
-</div>
+        <div class="footer">
+            Code by Jan Schupke (jan.schupke at gmail), images taken from <a href="http://www.flagpictures.org/">www.flagpictures.org</a>, 2014.
+        </div>
+    </div>
 
 <script type="text/javascript">
 <!--
@@ -230,8 +447,14 @@ document.getElementById("country").onkeypress = function(e) {
     if ( charCode == '13' ) {
       process();
       document.getElementById("country").value = "";
+      document.getElementById("country").focus();
       return false;
     }
+}
+
+// Focus on input when page loads
+window.onload = function() {
+    document.getElementById("country").focus();
 }
 
 var total = 0;
@@ -245,23 +468,37 @@ document.getElementById("flag").src = "img/" + currentEntry.getImage() + ".jpg";
 
 function process() {
     total++;
-
-    if(window.currentEntry.getCountry().toLowerCase() == document.getElementById("country").value.toLowerCase()) {
+    var userAnswer = document.getElementById("country").value.toLowerCase();
+    var correctAnswer = window.currentEntry.getCountry().toLowerCase();
+    var isCorrect = userAnswer === correctAnswer;
+    
+    if(isCorrect) {
         correct++;
+        // Visual feedback for correct answer
+        document.getElementById("flag").style.borderColor = "#48bb78";
+        setTimeout(function() {
+            document.getElementById("flag").style.borderColor = "#e2e8f0";
+        }, 1000);
+    } else {
+        // Visual feedback for incorrect answer
+        document.getElementById("flag").style.borderColor = "#f56565";
+        setTimeout(function() {
+            document.getElementById("flag").style.borderColor = "#e2e8f0";
+        }, 1000);
     }
 
     document.getElementById("prevFlag").src = document.getElementById("flag").src;
-    document.getElementById("prevCountry").innerHTML = "<b>Country:</b> " + currentEntry.getCountry();
-    document.getElementById("capital").innerHTML = "<b>Capital:</b> " + currentEntry.getCapital();
-    document.getElementById("continent").innerHTML = "<b>Continent:</b> " + currentEntry.getContinent();
-    document.getElementById("government").innerHTML = "<b>Government:</b> " + currentEntry.getGovernment();
-    document.getElementById("language").innerHTML = "<b>Official languages:</b> " + currentEntry.getLanguage();
+    document.getElementById("prevCountry").innerHTML = currentEntry.getCountry();
+document.getElementById("capital").innerHTML = currentEntry.getCapital();
+document.getElementById("continent").innerHTML = currentEntry.getContinent();
+document.getElementById("government").innerHTML = currentEntry.getGovernment();
+document.getElementById("language").innerHTML = currentEntry.getLanguage();
 
     index = Math.floor(Math.random() * (entries.length))
     currentEntry = entries[index];
 
     document.getElementById("flag").src = "img/" + currentEntry.getImage() + ".jpg";
-    document.getElementById("score").innerHTML = "<b>Score:</b> " + correct + " of " + window.total;
+    document.getElementById("score").innerHTML = "Score: " + correct + " of " + window.total;
 }
 
 // -->
