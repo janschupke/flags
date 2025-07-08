@@ -211,6 +211,28 @@
             border: 2px solid #e2e8f0;
         }
 
+        .result-indicator {
+            font-size: 1.5rem;
+            font-weight: 600;
+            padding: 12px 25px;
+            border-radius: 10px;
+            display: inline-block;
+            border: 2px solid;
+            margin-top: 10px;
+        }
+
+        .result-correct {
+            color: #059669;
+            background: #ecfdf5;
+            border-color: #10b981;
+        }
+
+        .result-incorrect {
+            color: #dc2626;
+            background: #fef2f2;
+            border-color: #ef4444;
+        }
+
         .info-section {
             margin-top: 25px;
             padding-top: 20px;
@@ -384,6 +406,7 @@
                         </div>
                         <img id="prevFlag" class="previous-flag hidden" src="" alt="Previous flag">
                     </div>
+                    <div id="resultIndicator" class="result-indicator hidden"></div>
                 </div>
             </div>
 
@@ -419,7 +442,7 @@
         </div>
 
         <div class="footer">
-            Code by Jan Schupke (jan.schupke at gmail), images taken from <a href="http://www.flagpictures.org/">www.flagpictures.org</a>, 2014.
+            Code by Jan Schupke (<a href="mailto:jan@schupke.io">jan@schupke.io</a>), images taken from <a href="http://www.flagpictures.org/">www.flagpictures.org</a>, 2014.
         </div>
     </div>
 
@@ -654,6 +677,19 @@ function process() {
     document.getElementById("continent").innerHTML = currentEntry.getContinent();
     document.getElementById("government").innerHTML = currentEntry.getGovernment();
     document.getElementById("language").innerHTML = currentEntry.getLanguage();
+
+    // Show result indicator
+    const resultIndicator = document.getElementById("resultIndicator");
+    resultIndicator.classList.remove("hidden");
+    resultIndicator.classList.remove("result-correct", "result-incorrect");
+    
+    if(isCorrect) {
+        resultIndicator.classList.add("result-correct");
+        resultIndicator.innerHTML = "✓ Correct!";
+    } else {
+        resultIndicator.classList.add("result-incorrect");
+        resultIndicator.innerHTML = "✗ Incorrect";
+    }
 
     index = Math.floor(Math.random() * (entries.length))
     currentEntry = entries[index];
