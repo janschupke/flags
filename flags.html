@@ -66,6 +66,21 @@
             margin-bottom: 25px;
         }
 
+        .flag-section {
+            background: #f7fafc;
+            border-radius: 12px;
+            padding: 20px;
+            border: 2px solid #e2e8f0;
+            text-align: center;
+        }
+
+        .flag-section h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 20px;
+        }
+
         .current-section {
             text-align: center;
         }
@@ -124,15 +139,15 @@
         }
 
         .flag-container {
-            margin-bottom: 25px;
+            margin-bottom: 15px;
         }
 
         .current-flag {
             border-radius: 10px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
             width: 100%;
-            max-width: 350px;
-            height: 200px;
+            max-width: 300px;
+            height: 160px;
             object-fit: cover;
             border: 2px solid #e2e8f0;
             transition: all 0.3s ease;
@@ -141,6 +156,47 @@
         .current-flag:hover {
             transform: scale(1.02);
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .previous-flag {
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 300px;
+            height: 160px;
+            object-fit: cover;
+            border: 2px solid #e2e8f0;
+        }
+
+        .placeholder-flag {
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 300px;
+            height: 160px;
+            border: 2px solid #e2e8f0;
+            background: #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-style: italic;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        .placeholder-info {
+            height: 200px;
+            background: #f1f5f9;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-style: italic;
+            text-align: center;
+            line-height: 1.4;
         }
 
         .score {
@@ -154,24 +210,18 @@
             border: 2px solid #e2e8f0;
         }
 
-
-
-        .previous-section h2 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #2d3748;
-            margin-bottom: 20px;
+        .info-section {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 2px solid #e2e8f0;
         }
 
-        .previous-flag {
-            border-radius: 10px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 300px;
-            height: 160px;
-            object-fit: cover;
-            border: 2px solid #e2e8f0;
+        .info-section h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2d3748;
             margin-bottom: 15px;
+            text-align: center;
         }
 
         .info-grid {
@@ -252,10 +302,11 @@
             }
 
             .current-flag {
-                height: 180px;
+                height: 160px;
             }
 
-            .previous-flag {
+            .previous-flag,
+            .placeholder-flag {
                 height: 140px;
             }
         }
@@ -284,10 +335,11 @@
             }
 
             .current-flag {
-                height: 160px;
+                height: 140px;
             }
 
-            .previous-flag {
+            .previous-flag,
+            .placeholder-flag {
                 height: 120px;
             }
 
@@ -314,38 +366,52 @@
             </div>
 
             <div class="flags-container">
-                <div class="current-section">
+                <div class="flag-section">
+                    <h2>Current Flag</h2>
                     <div class="flag-container">
                         <img id="flag" class="current-flag" src="" alt="Current flag">
                     </div>
                     <div class="score" id="score">Score: 0 of 0</div>
                 </div>
 
-                <div class="previous-section hidden" id="previousSection">
+                <div class="flag-section">
                     <h2>Previous Flag</h2>
-                    <img id="prevFlag" class="previous-flag" src="" alt="Previous flag">
-                    
-                    <div class="info-grid">
-                        <div class="info-item">
-                            <div class="info-label">Country</div>
-                            <div class="info-value" id="prevCountry">&nbsp;</div>
+                    <div id="previousFlagContainer">
+                        <div class="placeholder-flag" id="placeholderFlag">
+                            No previous flag yet.<br>
+                            Submit your first answer to see details here.
                         </div>
-                        <div class="info-item">
-                            <div class="info-label">Capital</div>
-                            <div class="info-value" id="capital">&nbsp;</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label">Continent</div>
-                            <div class="info-value" id="continent">&nbsp;</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label">Government</div>
-                            <div class="info-value" id="government">&nbsp;</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label">Languages</div>
-                            <div class="info-value" id="language">&nbsp;</div>
-                        </div>
+                        <img id="prevFlag" class="previous-flag hidden" src="" alt="Previous flag">
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-section" id="infoSection">
+                <h3>Previous Flag Information</h3>
+                <div id="infoPlaceholder" class="placeholder-info">
+                    No previous flag information yet.<br>
+                    Submit your first answer to see details here.
+                </div>
+                <div class="info-grid hidden" id="infoGrid">
+                    <div class="info-item">
+                        <div class="info-label">Country</div>
+                        <div class="info-value" id="prevCountry">&nbsp;</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Capital</div>
+                        <div class="info-value" id="capital">&nbsp;</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Continent</div>
+                        <div class="info-value" id="continent">&nbsp;</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Government</div>
+                        <div class="info-value" id="government">&nbsp;</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Languages</div>
+                        <div class="info-value" id="language">&nbsp;</div>
                     </div>
                 </div>
             </div>
@@ -576,9 +642,12 @@ function process() {
         }, 1000);
     }
 
-    // Show previous section and update with current flag info
-    document.getElementById("previousSection").classList.remove("hidden");
+    // Show previous flag and info section, update with current flag info
+    document.getElementById("placeholderFlag").classList.add("hidden");
+    document.getElementById("prevFlag").classList.remove("hidden");
     document.getElementById("prevFlag").src = document.getElementById("flag").src;
+    document.getElementById("infoPlaceholder").classList.add("hidden");
+    document.getElementById("infoGrid").classList.remove("hidden");
     document.getElementById("prevCountry").innerHTML = currentEntry.getCountry();
     document.getElementById("capital").innerHTML = currentEntry.getCapital();
     document.getElementById("continent").innerHTML = currentEntry.getContinent();
