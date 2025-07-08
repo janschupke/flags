@@ -1,71 +1,126 @@
 # Flags Quiz
 
-A simple web application that displays country flags and quizzes users on country names. Built with vanilla HTML, CSS, and JavaScript.
+An interactive web application that tests users' knowledge of world flags and provides educational information about countries. Built with vanilla HTML, CSS, and JavaScript.
 
-## Features
+**Live Demo:** [https://flags-zeta-pink.vercel.app/](https://flags-zeta-pink.vercel.app/)
 
-- Display random country flags
-- Quiz users on country names
-- Show detailed information about each country including:
-  - Capital city
-  - Continent
-  - Government type
+## ✨ Features
+
+- **Interactive Quiz System**: Randomly displays country flags for user identification
+- **Smart Answer Recognition**: Flexible matching system that accepts various answer formats
+- **Comprehensive Country Information**: Detailed data including:
+  - Capital cities
+  - Continental classification
+  - Government types
   - Official languages
-- Track score (correct answers vs total attempts)
-- Previous flag information display
+- **Progress Tracking**: Real-time score monitoring (correct answers vs. total attempts)
+- **Previous Flag Review**: Displays information about the most recently answered flag
+- **Responsive Design**: Optimized for desktop and mobile devices
+- **Modern UI**: Clean, intuitive interface with smooth animations
 
-## Deployment
+## 🚀 Quick Start
 
-This project is configured for easy deployment to Vercel:
+### Prerequisites
+
+- **Node.js** (version 14 or higher)
+- **npm** (included with Node.js)
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd flags
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server**
+   ```bash
+   npm start
+   ```
+
+4. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+## 🛠️ Development
+
+### Available Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm start` | Starts the development server |
+| `npm run build` | No build step required (static site) |
+
+### Development Features
+
+- **Live Reloading**: Automatic page refresh on file changes
+- **Static File Serving**: Efficient serving of all project assets
+- **Cross-Browser Compatibility**: Tested across modern browsers
+- **Network Access**: Available on local network for mobile testing
+
+### Project Structure
+
+```
+flags/
+├── index.html         # Main application file
+├── img/               # Country flag images (100+ countries)
+├── package.json       # Project configuration and dependencies
+├── vercel.json        # Vercel deployment configuration
+└── README.md          # Project documentation
+```
+
+## 🌐 Deployment
+
+This project is optimized for deployment on Vercel with zero configuration required.
+
+### Automatic Deployment
 
 1. **Fork or clone this repository**
 2. **Connect to Vercel:**
-   - Go to [vercel.com](https://vercel.com)
+   - Visit [vercel.com](https://vercel.com)
    - Sign up/login with your GitHub account
    - Click "New Project"
    - Import your GitHub repository
    - Vercel will automatically detect the configuration and deploy
 
-3. **Manual deployment:**
-   ```bash
-   # Install Vercel CLI
-   npm i -g vercel
-   
-   # Deploy
-   vercel
-   ```
-
-## Local Development
-
-To run the project locally:
+### Manual Deployment
 
 ```bash
-# Install dependencies
-npm install
+# Install Vercel CLI globally
+npm install -g vercel
 
-# Start local server
-npm start
+# Deploy to Vercel
+vercel
 ```
 
-Then open `http://localhost:3000` in your browser.
+## 🎯 How to Play
 
-## Project Structure
+1. **View the current flag** displayed in the main section
+2. **Enter the country name** in the input field
+3. **Submit your answer** by clicking "Check Answer" or pressing Enter
+4. **Review the results** and learn about the country's details
+5. **Track your progress** with the score counter
+6. **Continue playing** with new random flags
 
-```
-flags/
-├── flags.html          # Main application file
-├── img/               # Country flag images
-├── vercel.json        # Vercel deployment configuration
-├── package.json       # Project metadata
-└── README.md          # This file
-```
+## 📊 Technical Details
 
-## Credits
+- **Frontend**: HTML5, CSS3, and JavaScript (ES6+)
+- **Server**: Static file serving with `serve` package
+- **Deployment**: Vercel platform
+- **Images**: Flag images from [flagpictures.org](http://www.flagpictures.org/)
+- **Fonts**: Inter font family for modern typography
+- **Responsive**: Mobile-first design approach
 
-- **Code:** Jan Schupke (jan.schupke at gmail)
-- **Flag Images:** [www.flagpictures.org](http://www.flagpictures.org/)
-- **Year:** 2014
+## 📄 License
 
-## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-MIT License
+## 🙏 Acknowledgments
+
+- **Development**: [Jan Schupke](mailto:jan@schupke.io)
+- **Flag Images**: [www.flagpictures.org](http://www.flagpictures.org/)
+- **Original Project**: 2014
