@@ -15,7 +15,7 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #6b7280 0%, #374151 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -39,7 +39,7 @@
             font-weight: 700;
             color: #2d3748;
             margin-bottom: 8px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -108,8 +108,8 @@
         }
 
         .country-input:focus {
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
 
         .country-input::placeholder {
@@ -117,7 +117,7 @@
         }
 
         .check-button {
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
             color: white;
             border: none;
             padding: 12px 30px;
@@ -132,7 +132,7 @@
 
         .check-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
         }
 
         .check-button:active {
@@ -242,7 +242,7 @@
 
         .info-label {
             font-weight: 600;
-            color: #667eea;
+            color: #3b82f6;
             font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -265,7 +265,7 @@
         }
 
         .footer a {
-            color: #667eea;
+            color: #3b82f6;
             text-decoration: none;
             font-weight: 500;
         }
@@ -361,7 +361,7 @@
 
         <div class="game-section">
             <div class="input-group">
-                <input id="country" class="country-input" type="text" placeholder="Enter country name..." autocomplete="off">
+                <input id="country" class="country-input" type="text" placeholder="Enter country name..." autocomplete="off" autofocus>
                 <br>
                 <button id="button" class="check-button" onclick="process();">Check Answer</button>
             </div>
