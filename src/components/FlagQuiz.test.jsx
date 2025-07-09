@@ -12,10 +12,10 @@ vi.mock('../utils/flagUtils', async () => {
   };
 });
 import { getRandomCountry } from '../utils/flagUtils';
-vi.mock('../utils', () => ({
+vi.mock('../utils/utils', () => ({
   isAnswerCorrect: vi.fn()
 }));
-import { isAnswerCorrect } from '../utils';
+import { isAnswerCorrect } from '../utils/utils';
 
 const mockCountry = {
   key: 'finland',
@@ -60,7 +60,7 @@ describe('FlagQuiz (integration)', () => {
     fireEvent.click(screen.getByRole('button', { name: /check answer/i }));
     expect(screen.getByText(/finland/i)).toBeInTheDocument();
     expect(screen.getByText(/helsinki/i)).toBeInTheDocument();
-    expect(screen.getByText(/✓ correct!/i)).toBeInTheDocument();
+    expect(screen.getByText(/\u2713 correct!/i)).toBeInTheDocument();
   });
 
   it('shows incorrect infobox for wrong answer', () => {
@@ -70,7 +70,7 @@ describe('FlagQuiz (integration)', () => {
     const input = screen.getByPlaceholderText(/enter country name/i);
     fireEvent.change(input, { target: { value: 'sweden' } });
     fireEvent.click(screen.getByRole('button', { name: /check answer/i }));
-    expect(screen.getByText(/✗ incorrect/i)).toBeInTheDocument();
+    expect(screen.getByText(/\u2717 incorrect/i)).toBeInTheDocument();
   });
 
   it('input is reset and refocused after answer', () => {
@@ -88,7 +88,7 @@ describe('FlagQuiz (integration)', () => {
     const input = screen.getByPlaceholderText(/enter country name/i);
     fireEvent.change(input, { target: { value: 'FiNlAnD' } });
     fireEvent.click(screen.getByRole('button', { name: /check answer/i }));
-    expect(screen.getByText(/✓ correct!/i)).toBeInTheDocument();
+    expect(screen.getByText(/\u2713 correct!/i)).toBeInTheDocument();
     // Rapid answer
     fireEvent.change(input, { target: { value: 'SwEdEn' } });
     fireEvent.click(screen.getByRole('button', { name: /check answer/i }));

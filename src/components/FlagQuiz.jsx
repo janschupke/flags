@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { isAnswerCorrect } from '../utils';
+import { isAnswerCorrect } from '../utils/utils';
 import { getRandomCountry } from '../utils/flagUtils';
 import {
   Page,

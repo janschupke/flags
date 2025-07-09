@@ -1,4 +1,4 @@
-import { countries } from '../data/data';
+import { countries } from '../../data/data';
 
 export function getFlagUrl(isoCode) {
   return `https://flagcdn.com/${isoCode}.svg`;
