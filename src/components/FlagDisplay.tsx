@@ -55,7 +55,7 @@ const FlagDisplay: React.FC<FlagDisplayProps> = ({ current, prev, score }) => {
           </>
         ) : (
           <Placeholder>
-            No previous flag yet.<br />Submit your first answer to see details here.
+            Your previous answer will appear here after your first guess.
           </Placeholder>
         )}
       </FlagSection>

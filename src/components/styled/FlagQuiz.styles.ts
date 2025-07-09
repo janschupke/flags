@@ -205,7 +205,7 @@ export const InfoSection = styled.div`
   align-items: flex-start;
   justify-content: center;
   gap: 32px;
-  min-height: 160px;
+  min-height: 250px;
   @media (max-width: 800px) {
     flex-direction: column;
     gap: 16px;

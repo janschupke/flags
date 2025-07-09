@@ -40,6 +40,9 @@ export default function FlagQuiz() {
       <Container>
         <Title>Flags Quiz</Title>
         <Subtitle>Test your knowledge of world flags and learn about countries</Subtitle>
+        <div style={{ marginBottom: 12, color: '#2563eb', fontWeight: 600, fontSize: '1.08rem' }}>
+          Guess the country for the flag shown below.
+        </div>
         <QuizInput 
           input={input}
           setInput={setInput}

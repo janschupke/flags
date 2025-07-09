@@ -35,6 +35,27 @@ npm run test
 ```
 Runs the test suite with Vitest and React Testing Library.
 
+## 🎮 How to Play
+
+1. A random country flag will be displayed.
+2. Type the name of the country in the input box.
+3. Press Enter or click "Check" to submit your answer.
+4. You'll see if your answer was correct, and information about the country will appear.
+5. Your score is tracked as you play. Try to get as many correct as you can!
+
+## 📦 NPM Scripts
+
+- `npm run dev` — Start the development server
+- `npm run build` — Build the app for production
+- `npm run preview` — Preview the production build locally
+- `npm run test` — Run all tests (unit, integration, a11y, snapshot)
+
+## 🛠️ Troubleshooting
+
+- If you see a port conflict, change the port in `vite.config.ts`.
+- If tests fail due to missing Node features, ensure you're using Node 16+.
+- For issues with flag images, check your internet connection (flags are loaded from Flagcdn.com).
+
 ## 🛠️ Stack
 - **Frontend**: React 18+, Vite, **TypeScript**
 - **Styling**: styled-components
@@ -64,9 +85,9 @@ flags/
 - **Flag Images**: [Flagcdn.com](https://flagcdn.com/) (powered by [Flagpedia.net](https://flagpedia.net/))
 - **Original Project**: 2014, refactored for modern stack
 
----
+## 📝 License
 
-MIT License
+MIT License. See [LICENSE](LICENSE) for details.
 
 ## Error Boundaries
 
@@ -121,3 +142,9 @@ Snapshot tests are used to ensure the rendered output of components does not cha
 - Snapshots help you catch unexpected UI changes.
 
 For more, see the test files in `src/components/`.
+
+## Answer Logic & Accessibility
+
+- Partial matches are accepted (e.g., "United" for "United States").
+- Answers are case-insensitive.
+- You can use Enter to submit your answer for faster play.
