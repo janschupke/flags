@@ -6,33 +6,40 @@ import {
   InfoItem,
   InfoLabel,
   InfoValue,
-  InfoPlaceholder
+  InfoPlaceholder,
+  InfoWrapper
 } from './styled/FlagQuiz.styles';
 
 const FlagInfo = ({ prev }) => {
   return (
     <InfoSection>
-      <div style={{ width: '100%' }}>
+      <InfoWrapper>
         <InfoCaption>Previous Flag Information</InfoCaption>
         {prev ? (
           <InfoGrid>
             <InfoItem>
-              <InfoLabel>Country:</InfoLabel> <InfoValue>{prev.name || 'N/A'}</InfoValue>
+              <InfoLabel>Country</InfoLabel>
+              <InfoValue>{prev.name || 'N/A'}</InfoValue>
             </InfoItem>
             <InfoItem>
-              <InfoLabel>Capital:</InfoLabel> <InfoValue>{prev.capital || 'N/A'}</InfoValue>
+              <InfoLabel>Capital</InfoLabel>
+              <InfoValue>{prev.capital || 'N/A'}</InfoValue>
             </InfoItem>
             <InfoItem>
-              <InfoLabel>Continent:</InfoLabel> <InfoValue>{prev.continent || 'N/A'}</InfoValue>
+              <InfoLabel>Continent</InfoLabel>
+              <InfoValue>{prev.continent || 'N/A'}</InfoValue>
             </InfoItem>
             <InfoItem>
-              <InfoLabel>Government:</InfoLabel> <InfoValue>{prev.government || 'N/A'}</InfoValue>
+              <InfoLabel>Government</InfoLabel>
+              <InfoValue>{prev.government || 'N/A'}</InfoValue>
             </InfoItem>
             <InfoItem>
-              <InfoLabel>Languages:</InfoLabel> <InfoValue>{prev.language || 'N/A'}</InfoValue>
+              <InfoLabel>Languages</InfoLabel>
+              <InfoValue>{prev.language || 'N/A'}</InfoValue>
             </InfoItem>
             <InfoItem>
-              <InfoLabel>Your Answer:</InfoLabel> <InfoValue>{prev.user || 'N/A'}</InfoValue>
+              <InfoLabel>Your Answer</InfoLabel>
+              <InfoValue>{prev.user || 'N/A'}</InfoValue>
             </InfoItem>
           </InfoGrid>
         ) : (
@@ -40,7 +47,7 @@ const FlagInfo = ({ prev }) => {
             No previous flag information yet.<br />Submit your first answer to see details here.
           </InfoPlaceholder>
         )}
-      </div>
+      </InfoWrapper>
     </InfoSection>
   );
 };

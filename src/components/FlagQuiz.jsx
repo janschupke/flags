@@ -6,7 +6,8 @@ import {
   Container,
   Title,
   Subtitle,
-  Footnote
+  Footnote,
+  Disclaimer
 } from './styled/FlagQuiz.styles';
 import QuizInput from './QuizInput';
 import FlagDisplay from './FlagDisplay';
@@ -57,9 +58,9 @@ export default function FlagQuiz() {
         
         <Footnote>
           <div>Created by Jan Schupke &lt;<a href="mailto:jan@schupke.io">jan@schupke.io</a>&gt;</div>
-          <div style={{ marginTop: 6 }}>
+          <Disclaimer>
             <b>Disclaimer:</b> Some flags or information may be outdated or incorrect.
-          </div>
+          </Disclaimer>
         </Footnote>
       </Container>
     </Page>

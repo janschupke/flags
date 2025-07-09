@@ -1,4 +1,29 @@
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
+
+export const GlobalStyle = createGlobalStyle`
+  html, body, #root {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: linear-gradient(135deg, #6b7280 0%, #374151 100%);
+    color: #1e293b;
+  }
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  a {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  a:hover {
+    color: #1d4ed8;
+  }
+`;
 
 export const Page = styled.div`
   min-height: 100vh;
@@ -14,17 +39,18 @@ export const Container = styled.div`
   background: white;
   border-radius: 16px;
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-  padding: 25px;
+  padding: 32px 32px 28px 32px;
   max-width: 700px;
   width: 100%;
   text-align: center;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
 `;
 
 export const Title = styled.h1`
-  font-size: 2rem;
-  font-weight: 700;
-  color: #2d3748;
-  margin-bottom: 8px;
+  font-size: 2.3rem;
+  font-weight: 800;
+  color: #1e293b;
+  margin-bottom: 10px;
   background: linear-gradient(135deg, #3b82f6, #1d4ed8);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -32,18 +58,18 @@ export const Title = styled.h1`
 `;
 
 export const Subtitle = styled.p`
-  color: #718096;
-  font-size: 1rem;
-  margin-bottom: 25px;
+  color: #64748b;
+  font-size: 1.08rem;
+  margin-bottom: 28px;
   font-weight: 400;
 `;
 
 export const Score = styled.div`
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 600;
-  color: #2d3748;
+  color: #1e293b;
   background: #f7fafc;
-  padding: 12px 25px;
+  padding: 14px 28px;
   border-radius: 10px;
   display: inline-block;
   border: 2px solid #e2e8f0;
@@ -143,6 +169,10 @@ export const FlagImg = styled.img`
   margin-bottom: 0;
 `;
 
+export const FlagImgSpaced = styled(FlagImg)`
+  margin-bottom: 20px;
+`;
+
 export const Placeholder = styled.div`
   border-radius: 10px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
@@ -154,7 +184,9 @@ export const Placeholder = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #94a3b8;
+  color: #64748b;
+  font-size: 1rem;
+  font-weight: 500;
   font-style: italic;
   text-align: center;
   line-height: 1.4;
@@ -189,21 +221,30 @@ export const InfoGrid = styled.div`
 `;
 
 export const InfoItem = styled.div`
-  background: white;
-  padding: 12px;
+  background: #f8fafc;
+  padding: 18px 14px 14px 14px;
   border-radius: 8px;
   border: 1px solid #e2e8f0;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  margin-bottom: 2px;
 `;
 
 export const InfoLabel = styled.span`
+  display: block;
   color: #2563eb;
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 1.04rem;
+  margin-bottom: 6px;
+  letter-spacing: 0.01em;
 `;
 
 export const InfoValue = styled.span`
+  display: block;
   color: #64748b;
   font-weight: 500;
+  font-size: 1.13rem;
+  margin-top: 2px;
+  word-break: break-word;
 `;
 
 export const ResultIndicator = styled.div`
@@ -220,20 +261,25 @@ export const ResultIndicator = styled.div`
   text-align: center;
 `;
 
+export const ResultIndicatorSpaced = styled(ResultIndicator)`
+  margin-top: 18px;
+`;
+
 export const InfoCaption = styled.div`
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #2d3748;
-  margin-bottom: 10px;
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 14px;
+  letter-spacing: 0.01em;
 `;
 
 export const InfoPlaceholder = styled.div`
-  color: #718096;
+  color: #64748b;
   font-size: 1rem;
+  font-weight: 500;
   font-style: italic;
   text-align: center;
   line-height: 1.4;
-  white-space: pre-line;
 `;
 
 export const Footnote = styled.div`
@@ -242,4 +288,15 @@ export const Footnote = styled.div`
   color: #64748b;
   text-align: center;
   opacity: 0.85;
+`;
+
+export const Disclaimer = styled.div`
+  margin-top: 6px;
+  color: #64748b;
+  font-size: 0.98rem;
+  font-weight: 400;
+`;
+
+export const InfoWrapper = styled.div`
+  width: 100%;
 `; 

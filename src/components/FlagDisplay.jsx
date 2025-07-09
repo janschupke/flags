@@ -6,7 +6,9 @@ import {
   FlagImg,
   Placeholder,
   Score,
-  ResultIndicator
+  ResultIndicator,
+  FlagImgSpaced,
+  ResultIndicatorSpaced
 } from './styled/FlagQuiz.styles';
 import { getFlagUrl } from '../utils/flagUtils';
 
@@ -15,21 +17,21 @@ const FlagDisplay = ({ current, prev, score }) => {
     <FlagsRow>
       <FlagSection>
         <SectionHeader>Current Flag</SectionHeader>
-        <FlagImg src={getFlagUrl(current.isoCode)} alt="Current flag" />
+        <FlagImgSpaced src={getFlagUrl(current.isoCode)} alt="Current flag" />
         <Score>Score: {score.correct} of {score.total}</Score>
       </FlagSection>
       <FlagSection>
         <SectionHeader>Previous Flag</SectionHeader>
         {prev ? (
           <>
-            <FlagImg src={getFlagUrl(prev.isoCode)} alt="Previous flag" />
-            <ResultIndicator $correct={prev.isCorrect}>
+            <FlagImgSpaced src={getFlagUrl(prev.isoCode)} alt="Previous flag" />
+            <ResultIndicatorSpaced $correct={prev.isCorrect}>
               {prev.isCorrect ? '✓ Correct!' : '✗ Incorrect'}
-            </ResultIndicator>
+            </ResultIndicatorSpaced>
           </>
         ) : (
           <Placeholder>
-            No previous flag yet. Submit your first answer to see details here.
+            No previous flag yet.<br />Submit your first answer to see details here.
           </Placeholder>
         )}
       </FlagSection>
