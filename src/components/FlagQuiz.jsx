@@ -213,20 +213,28 @@ const InfoItem = styled.div`
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 `;
 
+const InfoLabel = styled.span`
+  color: #2563eb;
+  font-weight: 600;
+`;
+
+const InfoValue = styled.span`
+  color: #64748b;
+  font-weight: 500;
+`;
+
 const ResultIndicator = styled.div`
   font-size: 1.5rem;
   font-weight: 600;
+  color: ${props => (props.$correct ? '#059669' : '#dc2626')};
+  background: ${props => (props.$correct ? '#ecfdf5' : '#fef2f2')};
+  border: 2px solid;
+  border-color: ${props => (props.$correct ? '#10b981' : '#ef4444')};
   padding: 12px 25px;
   border-radius: 10px;
   display: inline-block;
-  border: 2px solid;
   margin-top: 0;
-  color: ${props => (props.$correct ? '#059669' : '#dc2626')};
-  background: ${props => (props.$correct ? '#ecfdf5' : '#fef2f2')};
-  border-color: ${props => (props.$correct ? '#10b981' : '#ef4444')};
-  flex: 1;
-  min-width: 160px;
-  align-self: flex-start;
+  text-align: center;
 `;
 
 const InfoCaption = styled.div`
@@ -325,13 +333,13 @@ export default function FlagQuiz() {
             <InfoCaption>Previous Flag Information</InfoCaption>
             {prev ? (
               <InfoGrid>
-                <InfoItem><b>Country:</b> {prev.name}</InfoItem>
-                <InfoItem><b>Capital:</b> {prev.capital}</InfoItem>
-                <InfoItem><b>Continent:</b> {prev.continent}</InfoItem>
-                <InfoItem><b>Government:</b> {prev.government}</InfoItem>
-                <InfoItem><b>Languages:</b> {prev.language}</InfoItem>
-                <InfoItem><b>Your Answer:</b> {prev.user}</InfoItem>
-                <InfoItem><b>Result:</b> {prev.isCorrect ? 'Correct' : 'Incorrect'}</InfoItem>
+                <InfoItem><InfoLabel>Country:</InfoLabel> <InfoValue>{prev.name || 'N/A'}</InfoValue></InfoItem>
+                <InfoItem><InfoLabel>Capital:</InfoLabel> <InfoValue>{prev.capital || 'N/A'}</InfoValue></InfoItem>
+                <InfoItem><InfoLabel>Continent:</InfoLabel> <InfoValue>{prev.continent || 'N/A'}</InfoValue></InfoItem>
+                <InfoItem><InfoLabel>Government:</InfoLabel> <InfoValue>{prev.government || 'N/A'}</InfoValue></InfoItem>
+                <InfoItem><InfoLabel>Languages:</InfoLabel> <InfoValue>{prev.language || 'N/A'}</InfoValue></InfoItem>
+                <InfoItem><InfoLabel>Your Answer:</InfoLabel> <InfoValue>{prev.user || 'N/A'}</InfoValue></InfoItem>
+                <InfoItem><InfoLabel>Result:</InfoLabel> <InfoValue>{typeof prev.isCorrect === 'boolean' ? (prev.isCorrect ? 'Correct' : 'Incorrect') : 'N/A'}</InfoValue></InfoItem>
               </InfoGrid>
             ) : (
               <InfoPlaceholder>No previous flag information yet.\nSubmit your first answer to see details here.</InfoPlaceholder>
