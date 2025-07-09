@@ -1,4 +1,14 @@
-export const countries = [
+export interface Country {
+  key: string;
+  name: string;
+  capital: string;
+  continent: string;
+  government: string;
+  language: string;
+  isoCode: string;
+}
+
+export const countries: Country[] = [
   {
     key: "afghanistan",
     name: "Afghanistan",

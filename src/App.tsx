@@ -3,13 +3,13 @@ import FlagQuiz from './components/FlagQuiz';
 import { GlobalStyle } from './components/styled/FlagQuiz.styles';
 import ErrorBoundary from './components/ErrorBoundary';
 
-function App() {
+const App: React.FC = () => {
   return <>
     <GlobalStyle />
     <ErrorBoundary>
       <FlagQuiz />
     </ErrorBoundary>
   </>;
-}
+};
 
-export default App;
+export default App; 

@@ -38,19 +38,19 @@ const mockCountry2 = {
 
 describe('FlagQuiz (integration)', () => {
   beforeEach(() => {
-    getRandomCountry.mockReset();
-    isAnswerCorrect.mockReset();
-    getRandomCountry
+    (getRandomCountry as any).mockReset();
+    (isAnswerCorrect as any).mockReset();
+    (getRandomCountry as any)
       .mockReturnValueOnce(mockCountry) // initial
       .mockReturnValueOnce(mockCountry2) // after answer
       .mockReturnValue(mockCountry2); // fallback
-    isAnswerCorrect.mockImplementation((input, name) => name.toLowerCase().includes(input.toLowerCase()));
+    (isAnswerCorrect as any).mockImplementation((input: string, name: string) => name.toLowerCase().includes(input.toLowerCase()));
   });
 
   it('input field is autofocused on page init', () => {
     render(<FlagQuiz />);
     const input = screen.getByPlaceholderText(/enter country name/i);
-    expect(document.activeElement === input || input.autofocus).toBeTruthy();
+    expect(document.activeElement === input || (input as HTMLInputElement).autofocus).toBeTruthy();
   });
 
   it('accepts a substring, evaluates answer, updates UI', () => {
@@ -64,8 +64,8 @@ describe('FlagQuiz (integration)', () => {
   });
 
   it('shows incorrect infobox for wrong answer', () => {
-    isAnswerCorrect.mockReturnValueOnce(false);
-    getRandomCountry.mockReturnValueOnce(mockCountry).mockReturnValueOnce(mockCountry2);
+    (isAnswerCorrect as any).mockReturnValueOnce(false);
+    (getRandomCountry as any).mockReturnValueOnce(mockCountry).mockReturnValueOnce(mockCountry2);
     render(<FlagQuiz />);
     const input = screen.getByPlaceholderText(/enter country name/i);
     fireEvent.change(input, { target: { value: 'sweden' } });
@@ -79,8 +79,8 @@ describe('FlagQuiz (integration)', () => {
     fireEvent.change(input, { target: { value: 'fin' } });
     fireEvent.click(screen.getByRole('button', { name: /check answer/i }));
     const newInput = screen.getByPlaceholderText(/enter country name/i);
-    expect(newInput.value).toBe('');
-    expect(document.activeElement === newInput || newInput.autofocus).toBeTruthy();
+    expect((newInput as HTMLInputElement).value).toBe('');
+    expect(document.activeElement === newInput || (newInput as HTMLInputElement).autofocus).toBeTruthy();
   });
 
   it('accepts answers case-insensitively and rapidly', () => {
@@ -97,7 +97,7 @@ describe('FlagQuiz (integration)', () => {
     expect(swedenElements.length).toBeGreaterThan(0);
     // Check that one of them is the country name (not the user input)
     const countryNameElement = swedenElements.find(el => 
-      el.textContent === 'Sweden' || el.textContent.toLowerCase() === 'sweden'
+      el.textContent === 'Sweden' || el.textContent?.toLowerCase() === 'sweden'
     );
     expect(countryNameElement).toBeTruthy();
   });

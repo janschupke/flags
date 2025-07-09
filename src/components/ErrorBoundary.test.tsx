@@ -15,7 +15,7 @@ describe('ErrorBoundary', () => {
 
   it('catches errors and displays fallback UI', () => {
     // Component that throws
-    function ProblemChild() {
+    function ProblemChild(): JSX.Element {
       throw new Error('Test error');
     }
     render(

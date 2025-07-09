@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
+import { vi, describe, it, expect } from 'vitest';
 import FlagDisplay from './FlagDisplay';
 
 // Partial mock for getRandomCountry, but use real getFlagUrl
@@ -54,7 +55,7 @@ describe('FlagDisplay', () => {
         score={{ correct: 1, total: 1 }}
       />
     );
-    expect(screen.getByText(/✓ correct!/i)).toBeInTheDocument();
+    expect(screen.getByText(/\u2713 correct!/i)).toBeInTheDocument();
     render(
       <FlagDisplay
         current={mockCountry2}
@@ -62,7 +63,7 @@ describe('FlagDisplay', () => {
         score={{ correct: 0, total: 1 }}
       />
     );
-    expect(screen.getByText(/✗ incorrect/i)).toBeInTheDocument();
+    expect(screen.getByText(/\u2717 incorrect/i)).toBeInTheDocument();
   });
 
   it('handles missing isoCode gracefully', () => {

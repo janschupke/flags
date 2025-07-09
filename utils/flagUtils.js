@@ -7,3 +7,4 @@ export function getFlagUrl(isoCode) {
 export function getRandomCountry() {
   return countries[Math.floor(Math.random() * countries.length)];
 } 
+ 

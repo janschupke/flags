@@ -5,7 +5,7 @@ import QuizInput from './QuizInput';
 
 describe('QuizInput', () => {
   it('renders input and button, input is autofocused', () => {
-    const ref = { current: null };
+    const ref = { current: null as HTMLInputElement | null };
     render(
       <QuizInput input="" setInput={() => {}} handleCheck={() => {}} inputRef={ref} />
     );
@@ -16,7 +16,7 @@ describe('QuizInput', () => {
   it('accepts text and fires handleCheck on button click and Enter key', () => {
     const handleCheck = vi.fn();
     const setInput = vi.fn();
-    const ref = { current: null };
+    const ref = { current: null as HTMLInputElement | null };
     render(
       <QuizInput input="" setInput={setInput} handleCheck={handleCheck} inputRef={ref} />
     );
@@ -33,7 +33,7 @@ describe('QuizInput', () => {
     const handleCheck = vi.fn();
     const setInput = vi.fn();
     render(
-      <QuizInput input="   " setInput={setInput} handleCheck={handleCheck} inputRef={{ current: null }} />
+      <QuizInput input="   " setInput={setInput} handleCheck={handleCheck} inputRef={{ current: null as HTMLInputElement | null }} />
     );
     const input = screen.getByPlaceholderText(/enter country name/i);
     fireEvent.change(input, { target: { value: '   ' } });
@@ -46,7 +46,7 @@ describe('QuizInput', () => {
   it('handles rapid typing', () => {
     const setInput = vi.fn();
     render(
-      <QuizInput input="" setInput={setInput} handleCheck={() => {}} inputRef={{ current: null }} />
+      <QuizInput input="" setInput={setInput} handleCheck={() => {}} inputRef={{ current: null as HTMLInputElement | null }} />
     );
     const input = screen.getByPlaceholderText(/enter country name/i);
     fireEvent.change(input, { target: { value: 'f' } });

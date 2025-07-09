@@ -1,0 +1,107 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`FlagInfo > matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-dNdcvo iUIJym"
+  >
+    <div
+      class="sc-gLaqbQ bHXGZx"
+    >
+      <div
+        class="sc-fbQrwq mA-dWM"
+      >
+        Previous Flag Information
+      </div>
+      <div
+        class="sc-gGKoUb iszrzq"
+      >
+        <div
+          class="sc-hwddKA dumgIt"
+        >
+          <span
+            class="sc-jaXbil eLufkf"
+          >
+            Country
+          </span>
+          <span
+            class="sc-eqNDNG hNIvwC"
+          >
+            Finland
+          </span>
+        </div>
+        <div
+          class="sc-hwddKA dumgIt"
+        >
+          <span
+            class="sc-jaXbil eLufkf"
+          >
+            Capital
+          </span>
+          <span
+            class="sc-eqNDNG hNIvwC"
+          >
+            Helsinki
+          </span>
+        </div>
+        <div
+          class="sc-hwddKA dumgIt"
+        >
+          <span
+            class="sc-jaXbil eLufkf"
+          >
+            Continent
+          </span>
+          <span
+            class="sc-eqNDNG hNIvwC"
+          >
+            Europe
+          </span>
+        </div>
+        <div
+          class="sc-hwddKA dumgIt"
+        >
+          <span
+            class="sc-jaXbil eLufkf"
+          >
+            Government
+          </span>
+          <span
+            class="sc-eqNDNG hNIvwC"
+          >
+            Parliamentary republic
+          </span>
+        </div>
+        <div
+          class="sc-hwddKA dumgIt"
+        >
+          <span
+            class="sc-jaXbil eLufkf"
+          >
+            Languages
+          </span>
+          <span
+            class="sc-eqNDNG hNIvwC"
+          >
+            Finnish, Swedish
+          </span>
+        </div>
+        <div
+          class="sc-hwddKA dumgIt"
+        >
+          <span
+            class="sc-jaXbil eLufkf"
+          >
+            Your Answer
+          </span>
+          <span
+            class="sc-eqNDNG hNIvwC"
+          >
+            fin
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

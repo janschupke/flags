@@ -10,7 +10,19 @@ import {
   InfoWrapper
 } from './styled/FlagQuiz.styles';
 
-const FlagInfo = ({ prev }) => {
+interface FlagInfoProps {
+  prev: {
+    name?: string;
+    capital?: string;
+    continent?: string;
+    government?: string;
+    language?: string;
+    user?: string;
+    isCorrect?: boolean;
+  } | null;
+}
+
+const FlagInfo: React.FC<FlagInfoProps> = ({ prev }) => {
   return (
     <InfoSection>
       <InfoWrapper>

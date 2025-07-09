@@ -1,6 +1,6 @@
-# Flags Quiz (React + Vite)
+# Flags Quiz (React + Vite + TypeScript)
 
-An interactive web application that tests users' knowledge of world flags and provides educational information about countries. Built with React, Vite, styled-components, and React Testing Library.
+An interactive web application that tests users' knowledge of world flags and provides educational information about countries. Built with React, Vite, TypeScript, styled-components, and React Testing Library.
 
 ## ✨ Features
 - **Interactive Quiz System**: Randomly displays country flags for user identification
@@ -10,7 +10,7 @@ An interactive web application that tests users' knowledge of world flags and pr
 - **Previous Flag Review**: Shows info about the last flag
 - **Responsive Design**: Modern, mobile-friendly UI
 - **Styled with styled-components**
-- **Tested with React Testing Library + Vitest**
+- **Tested with React Testing Library + Vitest + TypeScript**
 
 ## 🚀 Quick Start
 
@@ -36,9 +36,9 @@ npm run test
 Runs the test suite with Vitest and React Testing Library.
 
 ## 🛠️ Stack
-- **Frontend**: React 18+, Vite
+- **Frontend**: React 18+, Vite, **TypeScript**
 - **Styling**: styled-components
-- **Testing**: React Testing Library, Vitest, jest-dom
+- **Testing**: React Testing Library, Vitest, jest-dom, vitest-axe
 - **Flags**: [Flagcdn.com](https://flagcdn.com/) (ISO 3166-1 alpha-2 codes)
 
 ## 📁 Project Structure
@@ -46,14 +46,17 @@ Runs the test suite with Vitest and React Testing Library.
 flags/
 ├── src/
 │   ├── components/         # React components (FlagQuiz, etc.)
-│   ├── data.js             # Country/flag quiz data
-│   ├── utils.js            # Utility functions (answer checking)
-│   ├── setupTests.js       # Test setup for jest-dom
-│   ├── App.jsx             # Main app entry
-│   └── main.jsx            # React/Vite bootstrap
+│   │   ├── styled/         # styled-components (TypeScript)
+│   ├── data/               # Country/flag quiz data (TypeScript)
+│   ├── utils/              # Utility functions (TypeScript)
+│   ├── setupTests.ts       # Test setup for jest-dom, vitest-axe
+│   ├── App.tsx             # Main app entry
+│   └── main.tsx            # React/Vite bootstrap
 ├── public/                 # Static assets
 ├── package.json            # Scripts and dependencies
-├── vitest.config.js        # Vitest config
+├── vite.config.ts          # Vite config (TypeScript)
+├── vitest.config.ts        # Vitest config (TypeScript)
+├── tsconfig.json           # TypeScript config
 └── README.md               # This file
 ```
 
@@ -67,7 +70,7 @@ MIT License
 
 ## Error Boundaries
 
-This app uses a React Error Boundary (`src/components/ErrorBoundary.jsx`) to catch and display errors in the UI. If a component throws, a friendly error message is shown instead of a blank screen. The error boundary also provides a **Refresh App** button, allowing users to reload the app and recover from errors.
+This app uses a React Error Boundary (`src/components/ErrorBoundary.tsx`) to catch and display errors in the UI. If a component throws, a friendly error message is shown instead of a blank screen. The error boundary also provides a **Refresh App** button, allowing users to reload the app and recover from errors.
 
 ## Accessibility (a11y) Testing
 
@@ -97,7 +100,7 @@ Snapshot tests are used to ensure the rendered output of components does not cha
 
 ## Adding More Tests
 - To add more snapshot tests, use:
-  ```js
+  ```tsx
   import { render } from '@testing-library/react';
   it('matches snapshot', () => {
     const { asFragment } = render(<MyComponent />);
@@ -105,9 +108,8 @@ Snapshot tests are used to ensure the rendered output of components does not cha
   });
   ```
 - For accessibility, use:
-  ```js
-  import { axe, toHaveNoViolations } from 'vitest-axe';
-  expect.extend(toHaveNoViolations);
+  ```tsx
+  import { axe } from 'vitest-axe';
   // ...
   const results = await axe(container);
   expect(results).toHaveNoViolations();

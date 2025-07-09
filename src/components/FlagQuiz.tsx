@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { isAnswerCorrect } from '../utils/utils';
-import { getRandomCountry } from '../utils/flagUtils';
+import { getRandomCountry, Country } from '../utils/flagUtils';
 import {
   Page,
   Container,
@@ -14,11 +14,11 @@ import FlagDisplay from './FlagDisplay';
 import FlagInfo from './FlagInfo';
 
 export default function FlagQuiz() {
-  const [current, setCurrent] = useState(getRandomCountry());
+  const [current, setCurrent] = useState<Country>(getRandomCountry());
   const [input, setInput] = useState('');
-  const [score, setScore] = useState({ correct: 0, total: 0 });
-  const [prev, setPrev] = useState(null);
-  const inputRef = useRef(null);
+  const [score, setScore] = useState<{ correct: number; total: number }>({ correct: 0, total: 0 });
+  const [prev, setPrev] = useState<(Country & { user?: string; isCorrect?: boolean }) | null>(null);
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
     if (inputRef.current) inputRef.current.focus();
@@ -40,22 +40,18 @@ export default function FlagQuiz() {
       <Container>
         <Title>Flags Quiz</Title>
         <Subtitle>Test your knowledge of world flags and learn about countries</Subtitle>
-        
         <QuizInput 
           input={input}
           setInput={setInput}
           handleCheck={handleCheck}
           inputRef={inputRef}
         />
-        
         <FlagDisplay 
           current={current}
           prev={prev}
           score={score}
         />
-        
         <FlagInfo prev={prev} />
-        
         <Footnote>
           <div>Created by Jan Schupke &lt;<a href="mailto:jan@schupke.io">jan@schupke.io</a>&gt;</div>
           <Disclaimer>
@@ -66,3 +62,4 @@ export default function FlagQuiz() {
     </Page>
   );
 } 
+ 

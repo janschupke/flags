@@ -12,19 +12,43 @@ import {
 } from './styled/FlagQuiz.styles';
 import { getFlagUrl } from '../utils/flagUtils';
 
-const FlagDisplay = ({ current, prev, score }) => {
+interface Country {
+  key: string;
+  name: string;
+  capital: string;
+  continent: string;
+  government: string;
+  language: string;
+  isoCode: string;
+  user?: string;
+  isCorrect?: boolean;
+}
+
+interface Score {
+  correct: number;
+  total: number;
+}
+
+interface FlagDisplayProps {
+  current: Country;
+  prev: Country | null;
+  score: Score;
+}
+
+const FlagDisplay: React.FC<FlagDisplayProps> = ({ current, prev, score }) => {
+  const flagSrc = current.isoCode ? getFlagUrl(current.isoCode) : '';
   return (
     <FlagsRow>
       <FlagSection>
         <SectionHeader>Current Flag</SectionHeader>
-        <FlagImgSpaced src={getFlagUrl(current.isoCode)} alt="Current flag" />
+        <FlagImgSpaced src={flagSrc} alt="Current flag" />
         <Score>Score: {score.correct} of {score.total}</Score>
       </FlagSection>
       <FlagSection>
         <SectionHeader>Previous Flag</SectionHeader>
         {prev ? (
           <>
-            <FlagImgSpaced src={getFlagUrl(prev.isoCode)} alt="Previous flag" />
+            <FlagImgSpaced src={prev.isoCode ? getFlagUrl(prev.isoCode) : ''} alt="Previous flag" />
             <ResultIndicatorSpaced $correct={prev.isCorrect}>
               {prev.isCorrect ? '✓ Correct!' : '✗ Incorrect'}
             </ResultIndicatorSpaced>
@@ -40,3 +64,4 @@ const FlagDisplay = ({ current, prev, score }) => {
 };
 
 export default FlagDisplay; 
+ 
