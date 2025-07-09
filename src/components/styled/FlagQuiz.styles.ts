@@ -27,37 +27,260 @@ export const GlobalStyle = createGlobalStyle`
 
 export const Page = styled.div`
   min-height: 100vh;
+  width: 100vw;
+  background: linear-gradient(135deg, #6b7280 0%, #374151 100%);
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  padding: 32px 0 0 0;
+  justify-content: center;
+  padding: 20px;
 `;
 
 export const Container = styled.div`
   background: white;
-  border-radius: 18px;
-  box-shadow: 0 4px 32px 0 rgba(30,41,59,0.10);
-  padding: 32px 32px 24px 32px;
-  max-width: 480px;
+  border-radius: 16px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  padding: 32px 32px 28px 32px;
+  max-width: 700px;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  text-align: center;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
 `;
 
 export const Title = styled.h1`
-  font-size: 2.2rem;
+  font-size: 2.3rem;
   font-weight: 800;
-  margin: 0 0 8px 0;
-  color: #2563eb;
+  color: #1e293b;
+  margin-bottom: 10px;
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 `;
 
-export const Subtitle = styled.h2`
-  font-size: 1.1rem;
-  font-weight: 500;
-  margin: 0 0 24px 0;
+export const Subtitle = styled.p`
   color: #64748b;
+  font-size: 1.08rem;
+  margin-bottom: 28px;
+  font-weight: 400;
+`;
+
+export const Score = styled.div`
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #1e293b;
+  background: #f7fafc;
+  padding: 16px 25px;
+  border-radius: 10px;
+  display: inline-block;
+  border: 2px solid #e2e8f0;
+  margin-bottom: 20px;
+  margin-top: 18px;
+`;
+
+export const InputColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 30px;
+`;
+
+export const Input = styled.input`
+  width: 250px;
+  padding: 12px 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  outline: none;
+  margin-bottom: 0;
+  background: white;
+  color: #2d3748;
+  &::placeholder {
+    color: #a0aec0;
+  }
+  &:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  }
+`;
+
+export const Button = styled.button`
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  margin-left: 8px;
+  margin-bottom: 0;
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+  }
+  &:active {
+    transform: translateY(0);
+  }
+  @media (max-width: 600px) {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+`;
+
+export const FlagsRow = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 0;
+  @media (max-width: 800px) {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+`;
+
+export const FlagSection = styled.div`
+  background: #f7fafc;
+  border-radius: 12px;
+  padding: 20px;
+  border: 2px solid #e2e8f0;
+  text-align: center;
+  margin-bottom: 0;
+`;
+
+export const SectionHeader = styled.h2`
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 20px;
+`;
+
+export const FlagImg = styled.img`
+  border-radius: 10px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 300px;
+  height: 160px;
+  object-fit: cover;
+  border: 2px solid #e2e8f0;
+  margin-bottom: 0;
+`;
+
+export const FlagImgSpaced = styled(FlagImg)`
+  margin-bottom: 20px;
+`;
+
+export const Placeholder = styled.div`
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 300px;
+  height: 160px;
+  border: 2px solid #e2e8f0;
+  background: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  font-size: 1rem;
+  font-weight: 500;
+  font-style: italic;
+  text-align: center;
+  line-height: 1.4;
+`;
+
+export const InfoSection = styled.div`
+  background: #f7fafc;
+  border-radius: 12px;
+  padding: 20px;
+  border: 2px solid #e2e8f0;
+  margin-top: 30px;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 32px;
+  min-height: 160px;
+  @media (max-width: 800px) {
+    flex-direction: column;
+    gap: 16px;
+    align-items: stretch;
+  }
+`;
+
+export const InfoGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  text-align: left;
+  flex: 2;
+`;
+
+export const InfoItem = styled.div`
+  background: #f8fafc;
+  padding: 18px 14px 14px 14px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  margin-bottom: 2px;
+`;
+
+export const InfoLabel = styled.span`
+  display: block;
+  color: #2563eb;
+  font-weight: 700;
+  font-size: 1.04rem;
+  margin-bottom: 6px;
+  letter-spacing: 0.01em;
+`;
+
+export const InfoValue = styled.span`
+  display: block;
+  color: #64748b;
+  font-weight: 500;
+  font-size: 1.13rem;
+  margin-top: 2px;
+  word-break: break-word;
+`;
+
+export const ResultIndicator = styled.div<{ $correct?: boolean }>`
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: ${({ $correct }) => ($correct ? '#059669' : '#dc2626')};
+  background: ${({ $correct }) => ($correct ? '#ecfdf5' : '#fef2f2')};
+  border: 2px solid;
+  border-color: ${({ $correct }) => ($correct ? '#10b981' : '#ef4444')};
+  padding: 12px 25px;
+  border-radius: 10px;
+  display: inline-block;
+  margin-top: 0;
+  text-align: center;
+`;
+
+export const ResultIndicatorSpaced = styled(ResultIndicator)`
+  margin-top: 18px;
+`;
+
+export const InfoCaption = styled.div`
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 14px;
+  letter-spacing: 0.01em;
+`;
+
+export const InfoPlaceholder = styled.div`
+  color: #64748b;
+  font-size: 1rem;
+  font-weight: 500;
+  font-style: italic;
+  text-align: center;
+  line-height: 1.4;
 `;
 
 export const Footnote = styled.div`
@@ -65,167 +288,17 @@ export const Footnote = styled.div`
   font-size: 0.95rem;
   color: #64748b;
   text-align: center;
+  opacity: 0.85;
 `;
 
 export const Disclaimer = styled.div`
-  margin-top: 8px;
-  font-size: 0.9rem;
-  color: #dc2626;
-`;
-
-export const FlagsRow = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: 32px;
-  margin: 32px 0 0 0;
-  align-items: flex-start;
-  justify-content: center;
-`;
-
-export const FlagSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-width: 180px;
-`;
-
-export const SectionHeader = styled.div`
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #2563eb;
-  margin-bottom: 8px;
-`;
-
-export const FlagImg = styled.img`
-  width: 120px;
-  height: 80px;
-  object-fit: contain;
-  border-radius: 8px;
-  background: #f1f5f9;
-  margin-bottom: 8px;
-`;
-
-export const FlagImgSpaced = styled(FlagImg)`
-  margin-bottom: 16px;
-`;
-
-export const Placeholder = styled.div`
+  margin-top: 6px;
   color: #64748b;
   font-size: 0.98rem;
-  text-align: center;
-  margin-top: 16px;
-`;
-
-export const Score = styled.div`
-  margin-top: 8px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #1e293b;
-`;
-
-export const ResultIndicator = styled.div<{ $correct?: boolean }>`
-  margin-top: 8px;
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: ${({ $correct }) => ($correct ? '#16a34a' : '#dc2626')};
-`;
-
-export const ResultIndicatorSpaced = styled.div<{ $correct?: boolean }>`
-  margin-top: 16px;
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: ${({ $correct }) => ($correct ? '#16a34a' : '#dc2626')};
-`;
-
-export const InputColumn = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: 12px;
-  margin: 24px 0 0 0;
-  width: 100%;
-`;
-
-export const Input = styled.input`
-  flex: 1;
-  padding: 12px 16px;
-  font-size: 1.1rem;
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
-  outline: none;
-  transition: border 0.2s;
-  &:focus {
-    border: 1.5px solid #2563eb;
-  }
-`;
-
-export const Button = styled.button`
-  padding: 12px 24px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.2s;
-  &:hover {
-    background: linear-gradient(135deg, #2563eb, #1d4ed8);
-  }
-`;
-
-export const InfoSection = styled.div`
-  margin-top: 32px;
-  width: 100%;
-  background: #f8fafc;
-  border-radius: 12px;
-  padding: 20px 18px 18px 18px;
-  min-height: 180px;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-`;
-
-export const InfoCaption = styled.div`
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #2563eb;
-  margin-bottom: 12px;
-`;
-
-export const InfoGrid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px 18px;
-`;
-
-export const InfoItem = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 8px;
-`;
-
-export const InfoLabel = styled.span`
-  font-weight: 700;
-  color: #2563eb;
-  margin-right: 6px;
-`;
-
-export const InfoValue = styled.span`
-  color: #64748b;
-  font-weight: 500;
-`;
-
-export const InfoPlaceholder = styled.div`
-  color: #64748b;
-  font-size: 0.98rem;
-  text-align: center;
-  margin-top: 16px;
+  font-weight: 400;
 `;
 
 export const InfoWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
+  width: 100%;
 `; 
  
