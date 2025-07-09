@@ -5,6 +5,7 @@ import { isAnswerCorrect } from '../utils';
 
 const Page = styled.div`
   min-height: 100vh;
+  width: 100vw;
   background: linear-gradient(135deg, #6b7280 0%, #374151 100%);
   display: flex;
   align-items: center;
@@ -84,12 +85,14 @@ const Input = styled.input`
   transition: all 0.3s ease;
   outline: none;
   margin-bottom: 0;
+  background: white;
+  color: #2d3748;
+  &::placeholder {
+    color: #a0aec0;
+  }
   &:focus {
     border-color: #3b82f6;
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-  }
-  &::placeholder {
-    color: #a0aec0;
   }
 `;
 
@@ -186,6 +189,7 @@ const InfoSection = styled.div`
   align-items: flex-start;
   justify-content: center;
   gap: 32px;
+  min-height: 160px;
   @media (max-width: 800px) {
     flex-direction: column;
     gap: 16px;
@@ -238,6 +242,15 @@ const InfoPlaceholder = styled.div`
   font-style: italic;
   text-align: center;
   line-height: 1.4;
+  white-space: pre-line;
+`;
+
+const Footnote = styled.div`
+  margin-top: 32px;
+  font-size: 0.95rem;
+  color: #64748b;
+  text-align: center;
+  opacity: 0.85;
 `;
 
 function getFlagUrl(isoCode) {
@@ -309,7 +322,7 @@ export default function FlagQuiz() {
         </FlagsRow>
         <InfoSection>
           <div style={{ width: '100%' }}>
-            <InfoCaption>Flag Info</InfoCaption>
+            <InfoCaption>Previous Flag Information</InfoCaption>
             {prev ? (
               <InfoGrid>
                 <InfoItem><b>Country:</b> {prev.name}</InfoItem>
@@ -321,10 +334,16 @@ export default function FlagQuiz() {
                 <InfoItem><b>Result:</b> {prev.isCorrect ? 'Correct' : 'Incorrect'}</InfoItem>
               </InfoGrid>
             ) : (
-              <InfoPlaceholder>Submit an answer to see country info here.</InfoPlaceholder>
+              <InfoPlaceholder>No previous flag information yet.\nSubmit your first answer to see details here.</InfoPlaceholder>
             )}
           </div>
         </InfoSection>
+        <Footnote>
+          <div>Created by Jan Schupke &lt;<a href="mailto:jan@schupke.io">jan@schupke.io</a>&gt;</div>
+          <div style={{ marginTop: 6 }}>
+            <b>Disclaimer:</b> Some flags or information may be outdated or incorrect.
+          </div>
+        </Footnote>
       </Container>
     </Page>
   );
