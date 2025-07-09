@@ -64,3 +64,58 @@ flags/
 ---
 
 MIT License
+
+## Error Boundaries
+
+This app uses a React Error Boundary (`src/components/ErrorBoundary.jsx`) to catch and display errors in the UI. If a component throws, a friendly error message is shown instead of a blank screen. The error boundary also provides a **Refresh App** button, allowing users to reload the app and recover from errors.
+
+## Accessibility (a11y) Testing
+
+Accessibility is checked using [vitest-axe](https://github.com/nickcolley/vitest-axe). There are tests that ensure the main UI has no major accessibility violations. You can add more a11y tests for other components as needed.
+
+## Snapshot Testing
+
+Snapshot tests are used to ensure the rendered output of components does not change unexpectedly. When you run the test suite, snapshots are saved in `__snapshots__` folders next to your test files.
+
+### How to Run Snapshot Tests
+
+- To run all tests (including snapshot and a11y):
+  ```sh
+  npm test
+  # or
+  npx vitest
+  ```
+
+- If a snapshot test fails because the output changed, and you want to update the snapshot (e.g., after an intentional UI change):
+  ```sh
+  npx vitest -u
+  # or
+  npm test -- -u
+  ```
+
+- Review the diff before updating snapshots to ensure changes are intentional.
+
+## Adding More Tests
+- To add more snapshot tests, use:
+  ```js
+  import { render } from '@testing-library/react';
+  it('matches snapshot', () => {
+    const { asFragment } = render(<MyComponent />);
+    expect(asFragment()).toMatchSnapshot();
+  });
+  ```
+- For accessibility, use:
+  ```js
+  import { axe, toHaveNoViolations } from 'vitest-axe';
+  expect.extend(toHaveNoViolations);
+  // ...
+  const results = await axe(container);
+  expect(results).toHaveNoViolations();
+  ```
+
+## Summary
+- Error boundaries catch UI errors and show a fallback (with a Refresh App button).
+- Accessibility is checked automatically in tests.
+- Snapshots help you catch unexpected UI changes.
+
+For more, see the test files in `src/components/`.

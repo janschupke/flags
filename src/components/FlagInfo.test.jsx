@@ -47,4 +47,17 @@ describe('FlagInfo', () => {
     expect(matches[0].textContent.toLowerCase()).toContain("côte");
     expect(matches[1].textContent.toLowerCase()).toContain("côte");
   });
+
+  it('matches snapshot', () => {
+    const { asFragment } = render(<FlagInfo prev={{
+      name: 'Finland',
+      capital: 'Helsinki',
+      continent: 'Europe',
+      government: 'Parliamentary republic',
+      language: 'Finnish, Swedish',
+      user: 'fin',
+      isCorrect: true
+    }} />);
+    expect(asFragment()).toMatchSnapshot();
+  });
 }); 
