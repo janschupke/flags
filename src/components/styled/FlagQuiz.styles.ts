@@ -161,7 +161,7 @@ export const SectionHeader = styled.h2`
 
 export const FlagImg = styled.img`
   border-radius: 10px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
   width: 100%;
   max-width: 300px;
   height: 160px;

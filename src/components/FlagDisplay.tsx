@@ -42,7 +42,7 @@ const FlagDisplay: React.FC<FlagDisplayProps> = ({ current, prev, score }) => {
       <FlagSection>
         <SectionHeader>Current Flag</SectionHeader>
         <FlagImgSpaced src={flagSrc} alt="Current flag" />
-        <Score>Score: {score.correct} of {score.total}</Score>
+        <Score>Your Score: {score.correct} / {score.total}</Score>
       </FlagSection>
       <FlagSection>
         <SectionHeader>Previous Flag</SectionHeader>

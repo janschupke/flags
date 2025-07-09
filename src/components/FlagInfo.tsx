@@ -30,27 +30,27 @@ const FlagInfo: React.FC<FlagInfoProps> = ({ prev }) => {
       {prev ? (
         <InfoGrid>
           <InfoItem>
-            <InfoLabel>Name:</InfoLabel>
+            <InfoLabel>Name</InfoLabel>
             <InfoValue>{prev.name || 'Not available'}</InfoValue>
           </InfoItem>
           <InfoItem>
-            <InfoLabel>Capital:</InfoLabel>
+            <InfoLabel>Capital</InfoLabel>
             <InfoValue>{prev.capital || 'Not available'}</InfoValue>
           </InfoItem>
           <InfoItem>
-            <InfoLabel>Continent:</InfoLabel>
+            <InfoLabel>Continent</InfoLabel>
             <InfoValue>{prev.continent || 'Not available'}</InfoValue>
           </InfoItem>
           <InfoItem>
-            <InfoLabel>Government:</InfoLabel>
+            <InfoLabel>Government</InfoLabel>
             <InfoValue>{prev.government || 'Not available'}</InfoValue>
           </InfoItem>
           <InfoItem>
-            <InfoLabel>Language:</InfoLabel>
+            <InfoLabel>Language</InfoLabel>
             <InfoValue>{prev.language || 'Not available'}</InfoValue>
           </InfoItem>
           <InfoItem>
-            <InfoLabel>Your Answer:</InfoLabel>
+            <InfoLabel>Your Answer</InfoLabel>
             <InfoValue>{prev.user || 'Not available'}</InfoValue>
           </InfoItem>
         </InfoGrid>
