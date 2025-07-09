@@ -67,7 +67,6 @@ An interactive web application that tests users' knowledge of world flags and pr
 ```
 flags/
 ├── index.html         # Main application file
-├── img/               # Country flag images (100+ countries)
 ├── package.json       # Project configuration and dependencies
 ├── vercel.json        # Vercel deployment configuration
 └── README.md          # Project documentation
@@ -111,7 +110,7 @@ vercel
 - **Frontend**: HTML5, CSS3, and JavaScript (ES6+)
 - **Server**: Static file serving with `serve` package
 - **Deployment**: Vercel platform
-- **Images**: Flag images from [flagpictures.org](http://www.flagpictures.org/)
+- **Images**: Flag images are loaded dynamically from [Flagcdn.com](https://flagcdn.com/) using ISO 3166-1 alpha-2 country codes. This ensures always up-to-date, high-quality flag images without the need for local storage. See [Flagcdn.com - API & CDN](https://flagcdn.com/) for more info.
 - **Fonts**: Inter font family for modern typography
 - **Responsive**: Mobile-first design approach
 
@@ -122,5 +121,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 🙏 Acknowledgments
 
 - **Development**: [Jan Schupke](mailto:jan@schupke.io)
-- **Flag Images**: [www.flagpictures.org](http://www.flagpictures.org/)
+- **Flag Images**: [Flagcdn.com](https://flagcdn.com/) (powered by [Flagpedia.net](https://flagpedia.net/))
 - **Original Project**: 2014

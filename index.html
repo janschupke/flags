@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flags Quiz</title>
-    <link rel="icon" type="image/jpeg" href="img/finland.jpg">
+    <link rel="icon" type="image/svg+xml" href="https://flagcdn.com/fi.svg">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -464,6 +464,124 @@
 <script type="text/javascript">
 <!--
 
+// Mapping from local image keys to ISO 3166-1 alpha-2 codes for Flagcdn.com
+const flagCdnIsoCodes = {
+  afghanistan: 'af',
+  albania: 'al',
+  algeria: 'dz',
+  angola: 'ao',
+  argentina: 'ar',
+  armenia: 'am',
+  australia: 'au',
+  austria: 'at',
+  azerbaijan: 'az',
+  bahamas: 'bs',
+  bahrain: 'bh',
+  belgium: 'be',
+  bolivia: 'bo',
+  bosnia: 'ba',
+  brazil: 'br',
+  britain: 'gb', // Great Britain/United Kingdom
+  cambodia: 'kh',
+  cameron: 'cm', // Cameroon
+  canada: 'ca',
+  chad: 'td',
+  chile: 'cl',
+  china: 'cn',
+  croatia: 'hr',
+  cuba: 'cu',
+  czech: 'cz',
+  domrep: 'do', // Dominican Republic
+  ecuador: 'ec',
+  egypt: 'eg',
+  emirates: 'ae', // United Arab Emirates
+  estonia: 'ee',
+  ethiopia: 'et',
+  fiji: 'fj',
+  finland: 'fi',
+  france: 'fr',
+  gambia: 'gm',
+  germany: 'de',
+  ghana: 'gh',
+  greece: 'gr',
+  greenland: 'gl',
+  guinea: 'gn',
+  haiti: 'ht',
+  hungary: 'hu',
+  iceland: 'is',
+  india: 'in',
+  iraq: 'iq',
+  israel: 'il',
+  italy: 'it',
+  jamaica: 'jm',
+  japan: 'jp',
+  jordan: 'jo',
+  kazakhstan: 'kz',
+  kenya: 'ke',
+  korea: 'kr', // South Korea
+  kuwait: 'kw',
+  kyrgyzstan: 'kg',
+  latvia: 'lv',
+  lebanon: 'lb',
+  liberia: 'lr',
+  libya: 'ly',
+  liechtenstein: 'li',
+  luxembourg: 'lu',
+  macedonia: 'mk', // North Macedonia
+  madagascar: 'mg',
+  malaysia: 'my',
+  mali: 'ml',
+  mexico: 'mx',
+  micronesia: 'fm',
+  mongolia: 'mn',
+  morocco: 'ma',
+  nepal: 'np',
+  netherlands: 'nl',
+  norway: 'no',
+  peru: 'pe',
+  philippines: 'ph',
+  poland: 'pl',
+  portugal: 'pt',
+  qatar: 'qa',
+  russia: 'ru',
+  saf: 'za', // South Africa
+  saudi: 'sa', // Saudi Arabia
+  singapore: 'sg',
+  slovakia: 'sk',
+  somalia: 'so',
+  spain: 'es',
+  srilanka: 'lk', // Sri Lanka
+  sudan: 'sd',
+  sweden: 'se',
+  switzerland: 'ch',
+  taiwan: 'tw',
+  tanzania: 'tz',
+  tunisia: 'tn',
+  uganda: 'ug',
+  ukraine: 'ua',
+  uruguay: 'uy',
+  usa: 'us',
+  uzbekistan: 'uz',
+  vatican: 'va',
+  venezuela: 've',
+  vietnam: 'vn',
+  zambia: 'zm',
+  zealand: 'nz', // New Zealand
+  zimbabwe: 'zw',
+};
+
+// Helper to get Flagcdn.com URL for a given entry (SVG, fallback to PNG if needed)
+function getFlagCdnUrl(entry, format = 'svg') {
+  const code = flagCdnIsoCodes[entry.getImage()];
+  if (!code) return '';
+  if (format === 'svg') {
+    return `https://flagcdn.com/${code}.svg`;
+  } else if (format === 'png') {
+    return `https://flagcdn.com/w320/${code}.png`;
+  }
+  return '';
+}
+
 function Entry(image, country, capital, continent, government, language) {
     this.image = image;
     this.country = country;
@@ -628,7 +746,7 @@ var index = 0;
 
 index = Math.floor(Math.random() * (entries.length))
 currentEntry = entries[index];
-document.getElementById("flag").src = "img/" + currentEntry.getImage() + ".jpg";
+document.getElementById("flag").src = getFlagCdnUrl(currentEntry);
 
 // Helper function to check if answer contains correct words
 function isAnswerCorrect(userAnswer, correctAnswer) {
@@ -684,7 +802,7 @@ function process() {
     // Show previous flag and info section, update with current flag info
     document.getElementById("placeholderFlag").classList.add("hidden");
     document.getElementById("prevFlag").classList.remove("hidden");
-    document.getElementById("prevFlag").src = document.getElementById("flag").src;
+    document.getElementById("prevFlag").src = getFlagCdnUrl(currentEntry);
     document.getElementById("infoPlaceholder").classList.add("hidden");
     document.getElementById("infoGrid").classList.remove("hidden");
     document.getElementById("prevCountry").innerHTML = currentEntry.getCountry();
@@ -709,7 +827,7 @@ function process() {
     index = Math.floor(Math.random() * (entries.length))
     currentEntry = entries[index];
 
-    document.getElementById("flag").src = "img/" + currentEntry.getImage() + ".jpg";
+    document.getElementById("flag").src = getFlagCdnUrl(currentEntry);
     document.getElementById("score").innerHTML = "Score: " + correct + " of " + window.total;
 }
 
