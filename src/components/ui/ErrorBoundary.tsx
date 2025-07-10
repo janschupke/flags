@@ -1,4 +1,6 @@
 import React, { ReactNode } from 'react';
+import styled from 'styled-components';
+import { COLORS, UI } from '../../constants';
 
 interface ErrorBoundaryProps {
   children: ReactNode;
@@ -7,6 +9,25 @@ interface ErrorBoundaryProps {
 interface ErrorBoundaryState {
   hasError: boolean;
 }
+
+const AlertContainer = styled.div`
+  color: ${COLORS.status.error.text};
+  padding: 24px;
+  background: ${COLORS.status.error.background};
+  border-radius: ${UI.borderRadius.large};
+`;
+
+const RefreshButton = styled.button`
+  margin-top: 16px;
+  padding: 10px 24px;
+  background: ${COLORS.gradient.primary};
+  color: white;
+  border: none;
+  border-radius: ${UI.borderRadius.medium};
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+`;
 
 class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
   constructor(props: ErrorBoundaryProps) {
@@ -29,26 +50,13 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
   render() {
     if (this.state.hasError) {
       return (
-        <div role="alert" style={{ color: '#dc2626', padding: 24, background: '#fef2f2', borderRadius: 12 }}>
+        <AlertContainer role="alert">
           <h2>Something went wrong.</h2>
           <p>Sorry, an unexpected error occurred in the app.</p>
-          <button
-            style={{
-              marginTop: 16,
-              padding: '10px 24px',
-              background: 'linear-gradient(135deg, #3b82f6, #1d4ed8)',
-              color: 'white',
-              border: 'none',
-              borderRadius: 8,
-              fontWeight: 600,
-              fontSize: '1rem',
-              cursor: 'pointer'
-            }}
-            onClick={this.handleRefresh}
-          >
+          <RefreshButton onClick={this.handleRefresh}>
             Refresh App
-          </button>
-        </div>
+          </RefreshButton>
+        </AlertContainer>
       );
     }
     return this.props.children;

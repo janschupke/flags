@@ -42,7 +42,7 @@ const mockCountry2 = {
 describe('FlagDisplay', () => {
   it('shows placeholders for previous flag on first render', () => {
     render(<FlagDisplay current={mockCountry} prev={null} score={{ correct: 0, total: 0 }} />);
-    expect(screen.getByText(/no previous flag yet/i)).toBeInTheDocument();
+    expect(screen.getByText(/your previous answer will appear here after your first guess/i)).toBeInTheDocument();
     expect(screen.getByAltText(/current flag/i)).toBeInTheDocument();
     expect(screen.getByText(/score/i)).toBeInTheDocument();
   });
@@ -69,7 +69,7 @@ describe('FlagDisplay', () => {
   it('handles missing isoCode gracefully', () => {
     render(
       <FlagDisplay
-        current={{ ...mockCountry, isoCode: undefined }}
+        current={{ ...mockCountry, isoCode: '' }}
         prev={null}
         score={{ correct: 0, total: 0 }}
       />

@@ -9,53 +9,32 @@ import {
   ResultIndicator,
   FlagImgSpaced,
   ResultIndicatorSpaced
-} from './styled/FlagQuiz.styles';
-import { getFlagUrl } from '../utils/flagUtils';
-
-interface Country {
-  key: string;
-  name: string;
-  capital: string;
-  continent: string;
-  government: string;
-  language: string;
-  isoCode: string;
-  user?: string;
-  isCorrect?: boolean;
-}
-
-interface Score {
-  correct: number;
-  total: number;
-}
-
-interface FlagDisplayProps {
-  current: Country;
-  prev: Country | null;
-  score: Score;
-}
+} from '../styled/FlagQuiz.styles';
+import { getFlagUrl } from '../../utils/flagUtils';
+import { FlagDisplayProps } from '../../types';
+import { UI_TEXT, AnswerStatus } from '../../constants';
 
 const FlagDisplay: React.FC<FlagDisplayProps> = ({ current, prev, score }) => {
   const flagSrc = current.isoCode ? getFlagUrl(current.isoCode) : '';
   return (
     <FlagsRow>
       <FlagSection>
-        <SectionHeader>Current Flag</SectionHeader>
+        <SectionHeader>{UI_TEXT.currentFlag}</SectionHeader>
         <FlagImgSpaced src={flagSrc} alt="Current flag" />
-        <Score>Your Score: {score.correct} / {score.total}</Score>
+        <Score>{UI_TEXT.score} {score.correct} / {score.total}</Score>
       </FlagSection>
       <FlagSection>
-        <SectionHeader>Previous Flag</SectionHeader>
+        <SectionHeader>{UI_TEXT.previousFlag}</SectionHeader>
         {prev ? (
           <>
             <FlagImgSpaced src={prev.isoCode ? getFlagUrl(prev.isoCode) : ''} alt="Previous flag" />
             <ResultIndicatorSpaced $correct={prev.isCorrect}>
-              {prev.isCorrect ? '✓ Correct!' : '✗ Incorrect'}
+              {prev.isCorrect ? AnswerStatus.CORRECT : AnswerStatus.INCORRECT}
             </ResultIndicatorSpaced>
           </>
         ) : (
           <Placeholder>
-            Your previous answer will appear here after your first guess.
+            {UI_TEXT.placeholder.previousFlag}
           </Placeholder>
         )}
       </FlagSection>

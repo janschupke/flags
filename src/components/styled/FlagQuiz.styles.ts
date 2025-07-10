@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle } from 'styled-components';
+import { COLORS, UI } from '../../constants';
 
 export const GlobalStyle = createGlobalStyle`
   html, body, #root {
@@ -8,37 +9,44 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: linear-gradient(135deg, #6b7280 0%, #374151 100%);
-    color: #1e293b;
+    background: ${COLORS.gradient.background};
+    color: ${COLORS.text.primary};
   }
   *, *::before, *::after {
     box-sizing: border-box;
   }
   a {
-    color: #2563eb;
+    color: ${COLORS.primary.lightBlue};
     text-decoration: none;
     font-weight: 500;
     transition: color 0.2s;
   }
   a:hover {
-    color: #1d4ed8;
+    color: ${COLORS.primary.darkBlue};
   }
+`;
+
+export const Card = styled.div`
+  background: ${COLORS.background.primary};
+  border-radius: ${UI.borderRadius.large};
+  border: 2px solid ${COLORS.border.primary};
+  box-shadow: ${UI.shadows.small};
 `;
 
 export const Page = styled.div`
   min-height: 100vh;
   width: 100vw;
-  background: linear-gradient(135deg, #6b7280 0%, #374151 100%);
+  background: ${COLORS.gradient.background};
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: ${UI.spacing.md};
 `;
 
 export const Container = styled.div`
   background: white;
-  border-radius: 16px;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  border-radius: ${UI.borderRadius.xlarge};
+  box-shadow: ${UI.shadows.large};
   padding: 32px 32px 28px 32px;
   max-width: 700px;
   width: 100%;
@@ -49,16 +57,16 @@ export const Container = styled.div`
 export const Title = styled.h1`
   font-size: 2.3rem;
   font-weight: 800;
-  color: #1e293b;
+  color: ${COLORS.text.primary};
   margin-bottom: 10px;
-  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  background: ${COLORS.gradient.primary};
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 `;
 
 export const Subtitle = styled.p`
-  color: #64748b;
+  color: ${COLORS.text.secondary};
   font-size: 1.08rem;
   margin-bottom: 28px;
   font-weight: 400;
@@ -67,12 +75,12 @@ export const Subtitle = styled.p`
 export const Score = styled.div`
   font-size: 1.15rem;
   font-weight: 600;
-  color: #1e293b;
-  background: #f7fafc;
+  color: ${COLORS.text.primary};
+  background: ${COLORS.background.primary};
   padding: 16px 25px;
-  border-radius: 10px;
+  border-radius: ${UI.borderRadius.medium};
   display: inline-block;
-  border: 2px solid #e2e8f0;
+  border: 2px solid ${COLORS.border.primary};
   margin-bottom: 20px;
   margin-top: 18px;
 `;
@@ -81,15 +89,15 @@ export const InputColumn = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: ${UI.spacing.sm};
   margin-bottom: 30px;
 `;
 
 export const Input = styled.input`
   width: 250px;
   padding: 12px 16px;
-  border: 2px solid #e2e8f0;
-  border-radius: 10px;
+  border: 2px solid ${COLORS.border.primary};
+  border-radius: ${UI.borderRadius.medium};
   font-size: 1rem;
   font-family: inherit;
   transition: all 0.3s ease;
@@ -98,20 +106,20 @@ export const Input = styled.input`
   background: white;
   color: #2d3748;
   &::placeholder {
-    color: #a0aec0;
+    color: ${COLORS.text.muted};
   }
   &:focus {
-    border-color: #3b82f6;
+    border-color: ${COLORS.primary.blue};
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
   }
 `;
 
 export const Button = styled.button`
-  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  background: ${COLORS.gradient.primary};
   color: white;
   border: none;
   padding: 12px 30px;
-  border-radius: 10px;
+  border-radius: ${UI.borderRadius.medium};
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
@@ -143,11 +151,8 @@ export const FlagsRow = styled.div`
   }
 `;
 
-export const FlagSection = styled.div`
-  background: #f7fafc;
-  border-radius: 12px;
+export const FlagSection = styled(Card)`
   padding: 20px;
-  border: 2px solid #e2e8f0;
   text-align: center;
   margin-bottom: 0;
 `;
@@ -160,13 +165,13 @@ export const SectionHeader = styled.h2`
 `;
 
 export const FlagImg = styled.img`
-  border-radius: 10px;
+  border-radius: ${UI.borderRadius.medium};
   box-shadow: 0 2px 8px rgba(0,0,0,0.10);
   width: 100%;
   max-width: 300px;
   height: 160px;
   object-fit: cover;
-  border: 2px solid #e2e8f0;
+  border: 2px solid ${COLORS.border.primary};
   margin-bottom: 0;
 `;
 
@@ -174,18 +179,18 @@ export const FlagImgSpaced = styled(FlagImg)`
   margin-bottom: 20px;
 `;
 
-export const Placeholder = styled.div`
-  border-radius: 10px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+export const PlaceholderBox = styled.div`
+  border-radius: ${UI.borderRadius.medium};
+  box-shadow: ${UI.shadows.medium};
   width: 100%;
   max-width: 300px;
   height: 160px;
-  border: 2px solid #e2e8f0;
-  background: #f1f5f9;
+  border: 2px solid ${COLORS.border.primary};
+  background: ${COLORS.background.placeholder};
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #64748b;
+  color: ${COLORS.text.secondary};
   font-size: 1rem;
   font-weight: 500;
   font-style: italic;
@@ -193,11 +198,10 @@ export const Placeholder = styled.div`
   line-height: 1.4;
 `;
 
-export const InfoSection = styled.div`
-  background: #f7fafc;
-  border-radius: 12px;
+export const Placeholder = styled(PlaceholderBox)``;
+
+export const InfoSection = styled(Card)`
   padding: 20px;
-  border: 2px solid #e2e8f0;
   margin-top: 30px;
   text-align: center;
   display: flex;
@@ -222,17 +226,17 @@ export const InfoGrid = styled.div`
 `;
 
 export const InfoItem = styled.div`
-  background: #f8fafc;
+  background: ${COLORS.background.secondary};
   padding: 18px 14px 14px 14px;
-  border-radius: 8px;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  border-radius: ${UI.borderRadius.small};
+  border: 1px solid ${COLORS.border.primary};
+  box-shadow: ${UI.shadows.small};
   margin-bottom: 2px;
 `;
 
 export const InfoLabel = styled.span`
   display: block;
-  color: #2563eb;
+  color: ${COLORS.primary.lightBlue};
   font-weight: 700;
   font-size: 1.04rem;
   margin-bottom: 6px;
@@ -241,7 +245,7 @@ export const InfoLabel = styled.span`
 
 export const InfoValue = styled.span`
   display: block;
-  color: #64748b;
+  color: ${COLORS.text.secondary};
   font-weight: 500;
   font-size: 1.13rem;
   margin-top: 2px;
@@ -251,12 +255,12 @@ export const InfoValue = styled.span`
 export const ResultIndicator = styled.div<{ $correct?: boolean }>`
   font-size: 1.5rem;
   font-weight: 600;
-  color: ${({ $correct }) => ($correct ? '#059669' : '#dc2626')};
-  background: ${({ $correct }) => ($correct ? '#ecfdf5' : '#fef2f2')};
+  color: ${({ $correct }) => ($correct ? COLORS.status.success.text : COLORS.status.error.text)};
+  background: ${({ $correct }) => ($correct ? COLORS.status.success.background : COLORS.status.error.background)};
   border: 2px solid;
-  border-color: ${({ $correct }) => ($correct ? '#10b981' : '#ef4444')};
+  border-color: ${({ $correct }) => ($correct ? COLORS.status.success.border : COLORS.status.error.border)};
   padding: 12px 25px;
-  border-radius: 10px;
+  border-radius: ${UI.borderRadius.medium};
   display: inline-block;
   margin-top: 0;
   text-align: center;
@@ -269,31 +273,32 @@ export const ResultIndicatorSpaced = styled(ResultIndicator)`
 export const InfoCaption = styled.div`
   font-size: 1.18rem;
   font-weight: 700;
-  color: #1e293b;
+  color: ${COLORS.text.primary};
   margin-bottom: 14px;
   letter-spacing: 0.01em;
 `;
 
-export const InfoPlaceholder = styled.div`
-  color: #64748b;
-  font-size: 1rem;
-  font-weight: 500;
+export const InfoPlaceholder = styled(PlaceholderBox)`
+  height: auto;
+  max-width: 100%;
+  box-shadow: none;
+  border: none;
+  background: none;
   font-style: italic;
-  text-align: center;
-  line-height: 1.4;
+  padding: 0;
 `;
 
 export const Footnote = styled.div`
   margin-top: 32px;
   font-size: 0.95rem;
-  color: #64748b;
+  color: ${COLORS.text.secondary};
   text-align: center;
   opacity: 0.85;
 `;
 
 export const Disclaimer = styled.div`
   margin-top: 6px;
-  color: #64748b;
+  color: ${COLORS.text.secondary};
   font-size: 0.98rem;
   font-weight: 400;
 `;
