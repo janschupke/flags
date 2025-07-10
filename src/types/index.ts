@@ -29,13 +29,5 @@ export interface FlagDisplayProps {
 }
 
 export interface FlagInfoProps {
-  prev: {
-    name?: string;
-    capital?: string;
-    continent?: string;
-    government?: string;
-    language?: string;
-    user?: string;
-    isCorrect?: boolean;
-  } | null;
+  prev: Country | null;
 } 
