@@ -3,14 +3,9 @@ import {
   InputColumn,
   Input,
   Button
-} from './styled/FlagQuiz.styles';
-
-interface QuizInputProps {
-  input: string;
-  setInput: (val: string) => void;
-  handleCheck: () => void;
-  inputRef: React.RefObject<HTMLInputElement | null>;
-}
+} from '../styled/FlagQuiz.styles';
+import { GAME } from '../../constants';
+import { QuizInputProps } from '../../types';
 
 const QuizInput: React.FC<QuizInputProps> = ({ input, setInput, handleCheck, inputRef }) => {
   return (
@@ -18,13 +13,13 @@ const QuizInput: React.FC<QuizInputProps> = ({ input, setInput, handleCheck, inp
       <Input
         ref={inputRef}
         type="text"
-        placeholder="Enter country name..."
+        placeholder={GAME.inputPlaceholder}
         value={input}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInput(e.target.value)}
         onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => e.key === 'Enter' && handleCheck()}
         autoFocus
       />
-      <Button onClick={handleCheck}>Check Answer</Button>
+      <Button onClick={handleCheck}>{GAME.buttonText}</Button>
     </InputColumn>
   );
 };

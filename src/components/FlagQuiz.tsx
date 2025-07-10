@@ -1,6 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { isAnswerCorrect } from '../utils/utils';
-import { getRandomCountry, Country } from '../utils/flagUtils';
+import React from 'react';
+import { CONTACT, UI_TEXT } from '../constants';
+import { useQuiz } from '../hooks/useQuiz';
 import {
   Page,
   Container,
@@ -9,37 +9,37 @@ import {
   Footnote,
   Disclaimer
 } from './styled/FlagQuiz.styles';
-import QuizInput from './QuizInput';
-import FlagDisplay from './FlagDisplay';
-import FlagInfo from './FlagInfo';
+import QuizInput from './ui/QuizInput';
+import FlagDisplay from './features/FlagDisplay';
+import FlagInfo from './features/FlagInfo';
+
+function Footer() {
+  return (
+    <Footnote>
+      <div>Created by Jan Schupke &lt;<a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>&gt;</div>
+      <Disclaimer>
+        <b>Disclaimer:</b> {CONTACT.disclaimer}
+      </Disclaimer>
+    </Footnote>
+  );
+}
 
 export default function FlagQuiz() {
-  const [current, setCurrent] = useState<Country>(getRandomCountry());
-  const [input, setInput] = useState('');
-  const [score, setScore] = useState<{ correct: number; total: number }>({ correct: 0, total: 0 });
-  const [prev, setPrev] = useState<(Country & { user?: string; isCorrect?: boolean }) | null>(null);
-  const inputRef = useRef<HTMLInputElement | null>(null);
-
-  useEffect(() => {
-    if (inputRef.current) inputRef.current.focus();
-  }, [current]);
-
-  const handleCheck = () => {
-    const isCorrect = isAnswerCorrect(input, current.name);
-    setScore(s => ({
-      correct: s.correct + (isCorrect ? 1 : 0),
-      total: s.total + 1
-    }));
-    setPrev({ ...current, user: input, isCorrect });
-    setCurrent(getRandomCountry());
-    setInput('');
-  };
+  const {
+    current,
+    input,
+    score,
+    prev,
+    inputRef,
+    setInput,
+    handleCheck,
+  } = useQuiz();
 
   return (
     <Page>
       <Container>
-        <Title>Flags Quiz</Title>
-        <Subtitle>Test your knowledge of world flags and learn about countries</Subtitle>
+        <Title>{UI_TEXT.title}</Title>
+        <Subtitle>{UI_TEXT.subtitle}</Subtitle>
         <QuizInput 
           input={input}
           setInput={setInput}
@@ -52,12 +52,7 @@ export default function FlagQuiz() {
           score={score}
         />
         <FlagInfo prev={prev} />
-        <Footnote>
-          <div>Created by Jan Schupke &lt;<a href="mailto:jan@schupke.io">jan@schupke.io</a>&gt;</div>
-          <Disclaimer>
-            <b>Disclaimer:</b> Some flags or information may be outdated or incorrect.
-          </Disclaimer>
-        </Footnote>
+        <Footer />
       </Container>
     </Page>
   );

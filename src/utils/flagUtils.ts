@@ -1,16 +1,6 @@
 import { countries } from '../data/data';
-
-export interface Country {
-  key: string;
-  name: string;
-  capital: string;
-  continent: string;
-  government: string;
-  language: string;
-  isoCode: string;
-  user?: string;
-  isCorrect?: boolean;
-}
+import { FLAG_CDN_BASE_URL, FLAG_CDN_SIZE } from '../constants';
+import { Country } from '../types';
 
 export function getRandomCountry(): Country {
   const idx = Math.floor(Math.random() * countries.length);
@@ -19,6 +9,6 @@ export function getRandomCountry(): Country {
 
 export function getFlagUrl(isoCode: string): string {
   if (!isoCode) return '';
-  return `https://flagcdn.com/w320/${isoCode.toLowerCase()}.png`;
+  return `${FLAG_CDN_BASE_URL}/${FLAG_CDN_SIZE}/${isoCode.toLowerCase()}.png`;
 } 
  

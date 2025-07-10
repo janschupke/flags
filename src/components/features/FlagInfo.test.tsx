@@ -6,7 +6,7 @@ import FlagInfo from './FlagInfo';
 describe('FlagInfo', () => {
   it('shows placeholders for previous info on first render', () => {
     render(<FlagInfo prev={null} />);
-    expect(screen.getByText(/no previous flag information yet/i)).toBeInTheDocument();
+    expect(screen.getByText(/no previous flag information yet. submit your first answer to see details here/i)).toBeInTheDocument();
   });
 
   it('populates info after answer', () => {
@@ -35,10 +35,10 @@ describe('FlagInfo', () => {
     expect(userAnswerElement).toBeTruthy();
   });
 
-  it('shows N/A for missing fields', () => {
+  it('shows Not available for missing fields', () => {
     const prev = { name: '', capital: '', continent: '', government: '', language: '', user: '', isCorrect: undefined };
     render(<FlagInfo prev={prev} />);
-    expect(screen.getAllByText('N/A').length).toBeGreaterThan(2);
+    expect(screen.getAllByText('Not available').length).toBeGreaterThan(2);
   });
 
   it('handles special characters', () => {

@@ -1,0 +1,107 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`FlagInfo > matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bRKDuR sc-dFVmKS ghKnnY dqgBdK"
+  >
+    <div
+      class="sc-eQwNpu IBOfO"
+    >
+      <div
+        class="sc-eqNDNG cLaIod"
+      >
+        Previous Country Information
+      </div>
+      <div
+        class="sc-kCuUfV heVVPr"
+      >
+        <div
+          class="sc-dNdcvo iqiIwU"
+        >
+          <span
+            class="sc-fbQrwq fqteCW"
+          >
+            Name
+          </span>
+          <span
+            class="sc-gGKoUb gxfdNr"
+          >
+            Finland
+          </span>
+        </div>
+        <div
+          class="sc-dNdcvo iqiIwU"
+        >
+          <span
+            class="sc-fbQrwq fqteCW"
+          >
+            Capital
+          </span>
+          <span
+            class="sc-gGKoUb gxfdNr"
+          >
+            Helsinki
+          </span>
+        </div>
+        <div
+          class="sc-dNdcvo iqiIwU"
+        >
+          <span
+            class="sc-fbQrwq fqteCW"
+          >
+            Continent
+          </span>
+          <span
+            class="sc-gGKoUb gxfdNr"
+          >
+            Europe
+          </span>
+        </div>
+        <div
+          class="sc-dNdcvo iqiIwU"
+        >
+          <span
+            class="sc-fbQrwq fqteCW"
+          >
+            Government
+          </span>
+          <span
+            class="sc-gGKoUb gxfdNr"
+          >
+            Parliamentary republic
+          </span>
+        </div>
+        <div
+          class="sc-dNdcvo iqiIwU"
+        >
+          <span
+            class="sc-fbQrwq fqteCW"
+          >
+            Language
+          </span>
+          <span
+            class="sc-gGKoUb gxfdNr"
+          >
+            Finnish, Swedish
+          </span>
+        </div>
+        <div
+          class="sc-dNdcvo iqiIwU"
+        >
+          <span
+            class="sc-fbQrwq fqteCW"
+          >
+            Your Answer
+          </span>
+          <span
+            class="sc-gGKoUb gxfdNr"
+          >
+            fin
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

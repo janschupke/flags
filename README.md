@@ -2,6 +2,8 @@
 
 An interactive web application that tests users' knowledge of world flags and provides educational information about countries. Built with React, Vite, TypeScript, styled-components, and React Testing Library.
 
+Live demo: [https://flags.schupke.io](https://flags.schupke.io)
+
 ## ✨ Features
 - **Interactive Quiz System**: Randomly displays country flags for user identification
 - **Smart Answer Recognition**: Any full case-insensitive word of the country name is accepted
@@ -9,8 +11,9 @@ An interactive web application that tests users' knowledge of world flags and pr
 - **Progress Tracking**: Real-time score monitoring
 - **Previous Flag Review**: Shows info about the last flag
 - **Responsive Design**: Modern, mobile-friendly UI
-- **Styled with styled-components**
-- **Tested with React Testing Library + Vitest + TypeScript**
+- **Error Boundaries**: Graceful error handling with recovery options
+- **Accessibility**: Built with a11y best practices and automated testing
+- **TypeScript**: Fully typed for better development experience
 
 ## 🚀 Quick Start
 
@@ -57,28 +60,37 @@ Runs the test suite with Vitest and React Testing Library.
 - For issues with flag images, check your internet connection (flags are loaded from Flagcdn.com).
 
 ## 🛠️ Stack
-- **Frontend**: React 18+, Vite, **TypeScript**
+- **Frontend**: React 19+, Vite, TypeScript
 - **Styling**: styled-components
 - **Testing**: React Testing Library, Vitest, jest-dom, vitest-axe
 - **Flags**: [Flagcdn.com](https://flagcdn.com/) (ISO 3166-1 alpha-2 codes)
+- **Architecture**: Feature-based component organization with centralized types and constants
 
 ## 📁 Project Structure
 ```
 flags/
 ├── src/
-│   ├── components/         # React components (FlagQuiz, etc.)
-│   │   ├── styled/         # styled-components (TypeScript)
-│   ├── data/               # Country/flag quiz data (TypeScript)
-│   ├── utils/              # Utility functions (TypeScript)
-│   ├── setupTests.ts       # Test setup for jest-dom, vitest-axe
-│   ├── App.tsx             # Main app entry
-│   └── main.tsx            # React/Vite bootstrap
-├── public/                 # Static assets
-├── package.json            # Scripts and dependencies
-├── vite.config.ts          # Vite config (TypeScript)
-├── vitest.config.ts        # Vitest config (TypeScript)
-├── tsconfig.json           # TypeScript config
-└── README.md               # This file
+│   ├── components/         # React components
+│   │   ├── features/       # Feature-specific components
+│   │   │   ├── FlagDisplay.tsx
+│   │   │   └── FlagInfo.tsx
+│   │   ├── ui/            # Reusable UI components
+│   │   │   ├── QuizInput.tsx
+│   │   │   └── ErrorBoundary.tsx
+│   │   └── styled/        # Styled components
+│   ├── constants/          # Application constants
+│   ├── data/              # Country/flag quiz data
+│   ├── types/             # TypeScript type definitions
+│   ├── utils/             # Utility functions
+│   ├── setupTests.ts      # Test setup
+│   ├── App.tsx            # Main app entry
+│   └── main.tsx           # React/Vite bootstrap
+├── public/                # Static assets
+├── package.json           # Scripts and dependencies
+├── vite.config.ts         # Vite config
+├── vitest.config.ts       # Vitest config
+├── tsconfig.json          # TypeScript config
+└── README.md              # This file
 ```
 
 ## 🙏 Acknowledgments
@@ -148,3 +160,5 @@ For more, see the test files in `src/components/`.
 - Partial matches are accepted (e.g., "United" for "United States").
 - Answers are case-insensitive.
 - You can use Enter to submit your answer for faster play.
+- Error boundaries provide graceful error recovery.
+- Accessibility features include proper ARIA labels and keyboard navigation.
